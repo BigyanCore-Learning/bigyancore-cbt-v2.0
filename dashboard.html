@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | BigyanCore Learning</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="dashboard-logo">
+
+        <img src="images/logo.png" alt="BigyanCore">
+
+        <div>
+
+            <h2>BIGYANCORE LEARNING</h2>
+
+            <p>Learn Science the Smart Way.</p>
+
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="chemistry.html">Chemistry</a>
+
+        <a href="#">Profile</a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="welcome-banner">
+
+    <div class="user-profile">
+
+        <img id="user-photo" src="images/default-user.png" alt="Profile">
+
+        <div>
+
+            <h1 id="user-name">Welcome Back 👋</h1>
+
+            <p id="user-email">Loading...</p>
+
+        </div>
+
+    </div>
+
+    <button id="logout-btn" class="logout-btn">
+        Logout
+    </button>
+
+</section>
+
+
+
+<section class="dashboard-container">
+
+<div class="progress-card">
+
+<h3>📘 Chapters Completed</h3>
+
+<h2 id="chaptersCompleted">0</h2>
+
+<p>Keep learning!</p>
+
+</div>
+
+
+
+<div class="progress-card">
+
+<h3>📝 Tests Attempted</h3>
+
+<h2 id="testsAttempted">0</h2>
+
+<p>Great consistency.</p>
+
+</div>
+
+
+
+<div class="progress-card">
+
+<h3>⭐ Average Score</h3>
+
+<h2 id="averageScore">0%</h2>
+
+<p>Excellent performance.</p>
+
+</div>
+
+
+
+<div class="progress-card">
+
+<h3>🏆 Best Score</h3>
+
+<h2 id="bestScore">0 / 35</h2>
+
+<p>Atomic Structure</p>
+
+</div>
+
+</section>
+
+
+
+<section class="continue-learning">
+
+<h2>Continue Learning</h2>
+
+<div class="chapter-card">
+
+<h3>⚛ Structure of Atom</h3>
+
+<p>
+
+Notes • Practice • PYQs • Mock Tests
+
+</p>
+
+<a href="structure-of-atom.html" class="primary-btn">
+Continue
+</a>
+
+</div>
+
+</section>
+
+
+
+<section class="recent-activity">
+
+    <h2>Recent Activity</h2>
+
+    <div id="recentActivity"></div>
+
+</section>
+<section class="performance-summary">
+
+    <h2>📊 Performance Summary</h2>
+
+    <div class="summary-grid">
+
+        <div class="summary-card">
+            <h3>Questions Solved</h3>
+            <h2 id="questionsSolved">0</h2>
+        </div>
+
+        <div class="summary-card">
+            <h3>Total Study Time</h3>
+            <h2 id="studyTime">0 min</h2>
+        </div>
+
+        <div class="summary-card">
+            <h3>Best Chapter</h3>
+            <h2 id="bestChapter">--</h2>
+        </div>
+
+    </div>
+
+</section>
+
+
+</section>
+
+
+
+<footer class="dashboard-footer">
+
+<p>
+
+© 2026 BigyanCore Learning
+
+</p>
+
+</footer>
+<script type="module" src="js/dashboard.js"></script>
+</body>
+
+</html>

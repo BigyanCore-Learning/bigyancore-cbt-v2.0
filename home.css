@@ -1,0 +1,97 @@
+/* ---------- BigyanCore Homepage ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#eaf6ff,#ffffff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.home-container{
+
+    width:90%;
+    max-width:700px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:50px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.logo{
+
+    width:140px;
+
+    margin-bottom:25px;
+
+}
+
+h1{
+
+    color:#0B5ED7;
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.tagline{
+
+    font-size:22px;
+
+    color:#333;
+
+    margin-bottom:15px;
+
+}
+
+.subtitle{
+
+    color:#666;
+
+    margin-bottom:40px;
+
+}
+
+.start-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    background:#0B5ED7;
+
+    color:white;
+
+    padding:16px 40px;
+
+    border-radius:10px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.start-btn:hover{
+
+    background:#198754;
+
+}
