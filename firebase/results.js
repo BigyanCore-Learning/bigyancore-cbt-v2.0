@@ -6,11 +6,24 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+function getCurrentUser() {
+    return new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            unsubscribe();
+            resolve(user);
+        });
+    });
+}
+
 export async function saveQuizResult(result) {
 
     console.log("STEP 1: saveQuizResult() called");
 
-    const user = auth.currentUser;
+    const user = await getCurrentUser();
 
     console.log("STEP 2: Current user =", user);
 

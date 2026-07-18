@@ -1,3 +1,4 @@
+import questions from "./data/atomic-structure/question-bank.js";
 import { saveQuizResult } from "./firebase/results.js";
 console.log("script.js loaded");
 console.log("saveQuizResult =", saveQuizResult);
@@ -832,21 +833,24 @@ console.error(error);
 // Generate Report
 // -------------------------
 
-if(typeof generateReport==="function"){
+try {
 
-generateReport(
+    if (typeof generateReport === "function") {
 
-score,
+        generateReport(
+            score,
+            studentData,
+            userAnswers,
+            questionTimeSpent
+        );
 
-studentData,
+    }
 
-userAnswers,
+} catch (error) {
 
-questionTimeSpent
-
-);
+    console.error("Report generation failed:", error);
 
 }
-window.location.href="result.html";
 
+window.location.href = "result.html";
 }

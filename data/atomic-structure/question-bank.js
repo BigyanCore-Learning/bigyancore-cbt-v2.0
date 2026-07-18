@@ -947,3 +947,8 @@ difficulty:"Difficult"
 }
 
 ];
+questions.forEach((question, index) => {
+    question.id = index + 1;
+});
+
+export default questions;
