@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Firebase Admin SDK
+*serviceAccount*.json
+
+# Build folders
+dist/
+build/
