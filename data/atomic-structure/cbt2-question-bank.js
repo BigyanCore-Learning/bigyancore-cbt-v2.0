@@ -238,7 +238,7 @@ const questions = [
 },
 
 
-];{
+{
     id: 9,
 
     chapter : "Atomic Structure",
@@ -766,7 +766,7 @@ const questions = [
     explanation:
     "2s অরবিটালের একটি radial node থাকে। নোডে ইলেকট্রন পাওয়ার সম্ভাবনা শূন্য হওয়ায় সম্ভাবনা প্রথমে বেশি, পরে শূন্য এবং তারপর আবার বৃদ্ধি পায়।"
 },
-
+]
 questions.forEach((question, index) => {
     question.id = index + 1;
 });
