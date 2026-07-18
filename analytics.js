@@ -1,3 +1,4 @@
+import questions from "./data/atomic-structure/question-bank.js";
 /* =====================================================
    Atomic Structure CBT
    Performance Analytics System
@@ -265,3 +266,5 @@ suggestions:suggestions
 
 
 }
+
+export { generateAnalytics };
