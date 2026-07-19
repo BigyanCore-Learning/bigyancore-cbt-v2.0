@@ -2,9 +2,10 @@ export const quizConfig = {
 
     cbt1: {
 
-    title: "...",
+    title: "পরমাণুর গঠন (Atomic Structure) - CBT 1",
 
-    subtitle: "...",
+    subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
+
 
     duration: 60,
 
@@ -24,9 +25,10 @@ export const quizConfig = {
 },
     cbt2: {
 
-    title: "...",
+   title: "পরমাণুর গঠন (Atomic Structure) - CBT 2",
 
-    subtitle: "...",
+    subtitle: "Advanced Practice Test",
+
 
     duration: 35,
 
