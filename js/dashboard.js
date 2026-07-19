@@ -27,6 +27,8 @@ onAuthStateChanged(auth, async  (user) => {
 
         if (user.photoURL) {
             userPhoto.src = user.photoURL;
+            console.log("Image element:", userPhoto);
+            console.log("Current SRC:", userPhoto.src);
         }
 // ===============================
 // Dashboard Analytics
