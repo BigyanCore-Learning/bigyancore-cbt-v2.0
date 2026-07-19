@@ -1,5 +1,49 @@
-import questions from "./data/atomic-structure/question-bank.js";
+import { quizConfig } from "./js/quiz-config.js";
+import { loadQuestions } from "./js/question-loader.js";
 import { saveQuizResult } from "./firebase/results.js";
+
+let questions = [];
+async function initializeQuiz() {
+
+    questions = await loadQuestions();
+
+}
+
+await initializeQuiz();
+
+const currentCBT =
+    localStorage.getItem("currentCBT") || "cbt1";
+
+const config =
+    quizConfig[currentCBT];
+document.getElementById("quizTitle").innerText =
+    config.title;
+
+document.getElementById("quizSubtitle").innerText =
+    config.subtitle;
+
+document.getElementById("quizDuration").innerText =
+    `${config.duration} Minutes`;
+
+document.getElementById("quizQuestions").innerText =
+    `${config.totalQuestions} MCQs`;
+
+document.getElementById("quizMarks").innerText =
+    config.fullMarks;
+const instructionList =
+    document.getElementById("instructionList");
+
+instructionList.innerHTML = "";
+
+config.instructions.forEach(item => {
+
+    instructionList.innerHTML += `
+        <li>${item}</li>
+    `;
+
+});
+console.log("Current CBT:", currentCBT);
+console.log("Questions Loaded:", questions.length);
 console.log("script.js loaded");
 console.log("saveQuizResult =", saveQuizResult);
 /* =====================================================
@@ -25,7 +69,7 @@ let questionTimeSpent = [];
 let examStarted = false;
 
 
-let totalSeconds = 60 * 60; 
+let totalSeconds = config.duration * 60;
 // 60 minutes
 
 
