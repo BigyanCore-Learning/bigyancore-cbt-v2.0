@@ -39,17 +39,20 @@ export async function saveQuizResult(result) {
     );
 
     console.log("STEP 3: About to write to Firestore");
-
+    
+    console.log("Result object:", result);
     await addDoc(resultsRef, {
-        subject: result.subject,
-        chapter: result.chapter,
-        score: result.score,
-        totalQuestions: result.totalQuestions,
-        percentage: result.percentage,
-        timeTaken: result.timeTaken,
-        questionTimeSpent: result.questionTimeSpent,
-        completedAt: serverTimestamp()
-    });
+    subject: result.subject,
+    chapter: result.chapter,
 
+    cbt: result.cbt,
+
+    score: result.score,
+    totalQuestions: result.totalQuestions,
+    percentage: result.percentage,
+    timeTaken: result.timeTaken,
+    questionTimeSpent: result.questionTimeSpent,
+    completedAt: serverTimestamp()
+});
     console.log("✅ STEP 4: Firestore write successful");
 }

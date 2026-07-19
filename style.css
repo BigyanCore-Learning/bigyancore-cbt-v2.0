@@ -646,19 +646,37 @@ button:hover {
 /* ---------- Layout ---------- */
 
 
-.exam-layout {
+.exam-layout{
 
     display:grid;
 
-    grid-template-columns:
-
-    3fr 1fr;
+    grid-template-columns:minmax(0,1fr) 320px;
 
     gap:20px;
 
     width:95%;
 
-    margin:auto;
+    max-width:1400px;
+
+    margin:20px auto;
+
+    align-items:start;
+
+}
+.palette-area{
+
+    width:100%;
+
+    min-width:0;
+
+    overflow:hidden;
+
+
+}
+
+#questionPalette{
+
+    width:100%;
 
 }
 
@@ -763,23 +781,34 @@ button:hover {
 /* ---------- Question Palette ---------- */
 
 
-#questionPalette {
+#questionPalette{
 
     display:grid;
 
-    grid-template-columns:
-
-    repeat(5,1fr);
+    grid-template-columns:repeat(5,minmax(40px,1fr));
 
     gap:10px;
+
+    width:100%;
 
 }
 
 
+.palette-btn{
 
-.palette-btn {
+    width:100%;
 
-    padding:10px;
+    aspect-ratio:1;
+
+    padding:0;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
 
     background:#eee;
 

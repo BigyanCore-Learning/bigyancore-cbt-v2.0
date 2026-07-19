@@ -847,19 +847,21 @@ try{
 
 await saveQuizResult({
 
-subject:"Chemistry",
+    subject: "Chemistry",
 
-chapter:"Atomic Structure",
+    chapter: "Atomic Structure",
 
-score:score,
+    cbt: currentCBT,
 
-totalQuestions:questions.length,
+    score: score,
 
-percentage:percentage,
+    totalQuestions: questions.length,
 
-timeTaken:timeTaken,
+    percentage: percentage,
 
-questionTimeSpent:questionTimeSpent
+    timeTaken: timeTaken,
+
+    questionTimeSpent: questionTimeSpent
 
 });
 
