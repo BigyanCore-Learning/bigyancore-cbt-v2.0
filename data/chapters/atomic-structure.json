@@ -1,0 +1,35 @@
+{
+    "id": "atomic-structure",
+
+    "title": "Structure of Atom",
+
+    "emoji": "⚛",
+
+    "subject": "Chemistry",
+
+    "description": "Master one of the most important chapters of Chemistry.",
+
+    "notesProgress": 0,
+
+    "practiceProgress": 0,
+
+    "cbts": [
+
+        {
+            "id": "cbt1",
+            "title": "CBT 1",
+            "questions": 35,
+            "duration": 45,
+            "description": "Real Exam Experience"
+        },
+
+        {
+            "id": "cbt2",
+            "title": "CBT 2",
+            "questions": 25,
+            "duration": 35,
+            "description": "Advanced Practice"
+        }
+
+    ]
+}

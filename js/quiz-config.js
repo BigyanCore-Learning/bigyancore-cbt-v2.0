@@ -7,7 +7,7 @@ export const quizConfig = {
     subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
 
 
-    duration: 60,
+    duration: 45,
 
     totalQuestions: 35,
 

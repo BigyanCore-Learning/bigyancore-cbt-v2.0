@@ -1,3 +1,4 @@
+import { calculateDashboardStats } from "./dashboard-stats.js";
 import { auth, db } from "../firebase/firebase-config.js";
 import {
     onAuthStateChanged,
@@ -49,81 +50,55 @@ const quizQuery = query(
 
 const snapshot = await getDocs(quizQuery);
 
-let totalTests = 0;
-let totalPercentage = 0;
-let bestPercentage = 0;
-
-let totalQuestionsSolved = 0;
-let totalStudyTime = 0;
-
-let bestChapter = "--";
-
-const completedChapters = new Set();
-
-let activityHTML = "";
-
-
-
-snapshot.forEach((doc) => {
-
-    const data = doc.data();
-
-    totalQuestionsSolved += data.totalQuestions || 0;
-
-    totalStudyTime += data.timeTaken || 0;
-
-    completedChapters.add(data.chapter);
-    totalTests++;
-
-    totalPercentage += data.percentage || 0;
-
-    if ((data.percentage || 0) > bestPercentage) {
-
-    bestPercentage = data.percentage;
-
-    bestChapter = data.chapter;
-
-    }
-    const completedDate = data.completedAt
-    ? data.completedAt.toDate().toLocaleString()
-    : "Just now";
-    activityHTML += `
-<div class="activity-box">
-    <p>✅ ${data.chapter}</p>
-    <span>${data.percentage}%</span>
-    <small>${completedDate}</small>
-</div>
-`;
-});
-
-const average =
-    totalTests > 0
-        ? (totalPercentage / totalTests).toFixed(2)
-        : 0;
-
+const dashboardStats = calculateDashboardStats(snapshot);
+console.log(dashboardStats);
 document.getElementById("testsAttempted").innerText =
-    totalTests;
+   dashboardStats.totalTests;
 
 document.getElementById("averageScore").innerText =
-    average + "%";
+    dashboardStats.average + "%";
 
 document.getElementById("bestScore").innerText =
-    bestPercentage + "%";
+    dashboardStats.bestPercentage + "%";
 
     document.getElementById("questionsSolved").innerText =
-    totalQuestionsSolved;
+    dashboardStats.totalQuestionsSolved;
 
 document.getElementById("studyTime").innerText =
-    Math.round(totalStudyTime / 60) + " min";
+    Math.round(dashboardStats.totalStudyTime / 60) + " min";
 
 document.getElementById("bestChapter").innerText =
-    bestChapter;
+    dashboardStats.bestChapter;
 
 document.getElementById("recentActivity").innerHTML =
-    activityHTML;
+    dashboardStats.activityHTML;
     
 document.getElementById("chaptersCompleted").innerText =
-    completedChapters.size;
+    dashboardStats.completedChapters.size;
+    if (dashboardStats.latestQuiz) {
+
+    document.getElementById("continueChapter").innerText =
+        dashboardStats.latestQuiz.chapter;
+
+    document.getElementById("continueCBT").innerText =
+        dashboardStats.latestQuiz.cbt.toUpperCase();
+
+    document.getElementById("continuePercentage").innerText =
+        `${dashboardStats.latestQuiz.percentage}%`;
+
+    document.getElementById("continueBtn")
+.addEventListener("click", () => {
+
+    localStorage.setItem(
+        "currentCBT",
+        dashboardStats.latestQuiz.cbt
+    );
+
+    window.location.href =
+        "structure-of-atom.html";
+
+});
+    }
     } else {
 
         window.location.href = "login.html";
@@ -131,7 +106,7 @@ document.getElementById("chaptersCompleted").innerText =
     }
 
 });
-
+    
 logoutBtn.addEventListener("click", async () => {
 
     await signOut(auth);

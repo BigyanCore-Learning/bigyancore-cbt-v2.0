@@ -1,0 +1,35 @@
+{
+    "id": "mole-concept",
+
+    "title": "Some Basic Concepts of Chemistry",
+
+    "emoji": "🧪",
+
+    "subject": "Chemistry",
+
+    "description": "Learn Mole Concept from basics to advanced.",
+
+    "notesProgress": 0,
+
+    "practiceProgress": 0,
+
+    "cbts": [
+
+        {
+            "id": "cbt1",
+            "title": "CBT 1",
+            "questions": 35,
+            "duration": 45,
+            "description": "Real Exam Experience"
+        },
+
+        {
+            "id": "cbt2",
+            "title": "CBT 2",
+            "questions": 25,
+            "duration": 35,
+            "description": "Advanced Practice"
+        }
+
+    ]
+}

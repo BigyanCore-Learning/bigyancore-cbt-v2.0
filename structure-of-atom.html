@@ -58,43 +58,27 @@ Master one of the most important chapters of Chemistry.
 <section class="chapter-progress">
 
 <div class="progress-card">
-
-<h3>📘 Notes</h3>
-
-<h2>0%</h2>
-
-<p>Read chapter notes</p>
-
+    <h3>📘 Notes</h3>
+    <h2 id="notesProgress">0%</h2>
+    <p>Read chapter notes</p>
 </div>
 
 <div class="progress-card">
-
-<h3>📝 Practice</h3>
-
-<h2>0</h2>
-
-<p>Questions Solved</p>
-
+    <h3>📝 Practice</h3>
+    <h2 id="practiceSolved">0</h2>
+    <p>Questions Solved</p>
 </div>
 
 <div class="progress-card">
-
-<h3>🏆 Best Score</h3>
-
-<h2>--</h2>
-
-<p>Mock Test</p>
-
+    <h3>🏆 Best Score</h3>
+    <h2 id="bestScore">--</h2>
+    <p>Best CBT Score</p>
 </div>
 
 <div class="progress-card">
-
-<h3>⏱ Time Spent</h3>
-
-<h2>0 min</h2>
-
-<p>Learning Time</p>
-
+    <h3>⏱ Time Spent</h3>
+    <h2 id="timeSpent">0 min</h2>
+    <p>Total Study Time</p>
 </div>
 
 </section>
@@ -168,25 +152,36 @@ Real Exam Experience
 <a
 id="cbt1Button"
 href="quiz.html"
-class="primary-btn"
-onclick="localStorage.setItem('currentCBT','cbt1')">
-
+class="primary-btn">
 Start CBT 1
 
 </a>
 
-<p id="cbt1Status">
+    <div class="cbt-stats">
 
-🔵 Not Attempted
+    <p
+    id="cbt1Attempts"
+    class="attempts">
 
-</p>
+    Attempts : 0
 
-<p id="cbt1Score">
+    </p>
 
-Best Score: --
+    <p
+    id="cbt1BestScore"
+    class="best-score">
 
-</p>
+    Best Score : --
 
+    </p>
+    <p
+    id="cbt1Percentage">
+
+    Best Percentage : --
+
+    </p>
+
+    </div>
 </div>
 
 <div class="learning-card">
@@ -200,13 +195,39 @@ Advanced Practice
 </p>
 
 <a
+id="cbt2Button"
 href="quiz.html"
-class="primary-btn"
-onclick="localStorage.setItem('currentCBT','cbt2')">
+class="primary-btn">
 
 Start CBT 2
-
 </a>
+
+    <div class="cbt-stats">
+
+    <p
+    id="cbt2Attempts"
+    class="attempts">
+
+    Attempts : 0
+
+    </p>
+
+    <p
+    id="cbt2BestScore"
+    class="best-score">
+
+    Best Score : --
+
+    </p>
+    <p
+    id="cbt2Percentage">
+
+    Best Percentage : --
+
+    </p>
+
+    </div>
+
 
 </div>
 
@@ -223,6 +244,16 @@ Start CBT 2
 
 </footer>
 
+<script type="module" src="js/chapter-page.js"></script>
+<script type="module">
+
+import { loadChapter } from "./js/chapter-loader.js";
+
+const chapter = await loadChapter("atomic-structure");
+
+console.log(chapter);
+
+</script>
 </body>
 
 </html>

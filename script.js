@@ -46,11 +46,11 @@ console.log("Current CBT:", currentCBT);
 console.log("Questions Loaded:", questions.length);
 console.log("script.js loaded");
 console.log("saveQuizResult =", saveQuizResult);
+
 /* =====================================================
    Atomic Structure CBT System
    Main Quiz Engine
 ===================================================== */
-
 
 // -------------------------
 // Global Variables
@@ -80,7 +80,6 @@ let questionTimerInterval;
 let currentQuestionSeconds = 0;
 
 
-
 // -------------------------
 // Student Data
 // -------------------------
@@ -91,8 +90,6 @@ let studentData = {
     roll:""
 
 };
-
-
 
 // -------------------------
 // Start Button
@@ -140,10 +137,6 @@ document
     .classList.remove("hidden");
 
 };
-
-
-
-
 
 // -------------------------
 // Begin Exam
@@ -199,10 +192,6 @@ document
 
 };
 
-
-
-
-
 // -------------------------
 // Exam Timer
 // -------------------------
@@ -250,10 +239,6 @@ timerInterval=setInterval(()=>{
 
 
 }
-
-
-
-
 
 // -------------------------
 // Question Timer
@@ -305,9 +290,6 @@ seconds%60;
 return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
 }
-
-
-
 
 // -------------------------
 // Display Question
@@ -442,10 +424,6 @@ updatePalette();
 
 }
 
-
-
-
-
 // -------------------------
 // Save Answer
 // -------------------------
@@ -494,10 +472,6 @@ document
 saveAnswer
 );
 
-
-
-
-
 // -------------------------
 // Hint Button
 // -------------------------
@@ -517,10 +491,6 @@ box.classList.toggle("hidden");
 
 
 };
-
-
-
-
 
 // -------------------------
 // Navigation
@@ -576,10 +546,6 @@ showQuestion(currentQuestion-1);
 
 };
 
-
-
-
-
 // -------------------------
 // Mark for Review
 // -------------------------
@@ -599,11 +565,6 @@ updatePalette();
 
 
 };
-
-
-
-
-
 
 // -------------------------
 // Question Palette
@@ -728,12 +689,6 @@ percent+"%";
 
 }
 
-
-
-
-
-
-
 // -------------------------
 // Submit Exam
 // -------------------------
@@ -817,8 +772,6 @@ score++;
 
 document
 
-
-
 // -------------------------
 // Save Result to Firebase
 // -------------------------
@@ -872,8 +825,6 @@ console.log("Quiz result saved.");
 console.error(error);
 
 }
-
-
 
 // -------------------------
 // Generate Report

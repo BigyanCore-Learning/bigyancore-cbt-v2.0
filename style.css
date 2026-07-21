@@ -1644,3 +1644,34 @@ flex-wrap:wrap;
     }
 
 }
+.cbt-stats{
+
+    margin-top:15px;
+
+    padding-top:12px;
+
+    border-top:1px solid #e5e5e5;
+
+}
+
+.cbt-stats p{
+
+    margin:8px 0;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.best-score{
+
+    color:#2e7d32;
+
+}
+
+.attempts{
+
+    color:#1565c0;
+
+}
