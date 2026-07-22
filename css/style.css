@@ -1675,3 +1675,15 @@ flex-wrap:wrap;
     color:#1565c0;
 
 }
+#user-photo{
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    display:block;
+
+}

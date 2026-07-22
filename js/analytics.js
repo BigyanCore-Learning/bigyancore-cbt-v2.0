@@ -1,4 +1,4 @@
-import questions from "./data/atomic-structure/question-bank.js";
+import questions from "../data/atomic-structure/question-bank.js";
 /* =====================================================
    Atomic Structure CBT
    Performance Analytics System

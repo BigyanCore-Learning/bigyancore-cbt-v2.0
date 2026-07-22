@@ -17,6 +17,37 @@ const userName = document.getElementById("user-name");
 const userEmail = document.getElementById("user-email");
 const userPhoto = document.getElementById("user-photo");
 const logoutBtn = document.getElementById("logout-btn");
+function loadProfilePhoto(photoURL) {
+
+    if (!photoURL) {
+        userPhoto.src = "images/default-user.png";
+        return;
+    }
+
+    const img = new Image();
+
+    img.onload = () => {
+
+        userPhoto.src =
+            photoURL + "?v=" + Date.now();
+
+        console.log("✅ Profile photo loaded");
+
+    };
+
+    img.onerror = () => {
+
+        console.log("❌ Google photo failed");
+
+        userPhoto.src =
+            "images/default-user.png";
+
+    };
+
+    img.src =
+        photoURL + "?v=" + Date.now();
+
+}
 
 onAuthStateChanged(auth, async  (user) => {
 
@@ -26,11 +57,7 @@ onAuthStateChanged(auth, async  (user) => {
         userName.textContent = `Welcome Back, ${user.displayName}`;
         userEmail.textContent = user.email;
 
-        if (user.photoURL) {
-            userPhoto.src = user.photoURL;
-            console.log("Image element:", userPhoto);
-            console.log("Current SRC:", userPhoto.src);
-        }
+        loadProfilePhoto(user.photoURL);
 // ===============================
 // Dashboard Analytics
 // ===============================
@@ -95,7 +122,7 @@ document.getElementById("chaptersCompleted").innerText =
     );
 
     window.location.href =
-        "structure-of-atom.html";
+    `structure-of-atom.html?id=${chapterId}`;
 
 });
     }

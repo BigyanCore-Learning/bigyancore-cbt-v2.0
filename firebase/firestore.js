@@ -16,16 +16,35 @@ export async function saveUser(user){
     if(!snapshot.exists()){
 
         await setDoc(userRef,{
-            uid:user.uid,
-            name:user.displayName,
-            email:user.email,
-            photo:user.photoURL,
-            createdAt:serverTimestamp(),
-            lastLogin:serverTimestamp(),
-            role:"student",
-            board:"",
-            class:""
-        });
+    uid: user.uid,
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL,
+
+    createdAt: serverTimestamp(),
+    lastLogin: serverTimestamp(),
+
+    role: "student",
+    board: "",
+    class: "",
+
+    // ==========================
+    // Student Progress
+    // ==========================
+
+    xp: 0,
+    level: 1,
+    streak: 0,
+
+    achievements: [],
+
+    notesCompleted: [],
+
+    practiceCompleted: [],
+
+    chaptersCompleted: []
+
+});
 
         console.log("New student created");
 

@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Structure of Atom | BigyanCore Learning</title>
+<title id="pageTitle">BigyanCore Learning</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -45,13 +45,9 @@
 
 <section class="chapter-hero">
 
-<h1>⚛ Structure of Atom</h1>
+<h1 id="chapterTitle"></h1>
 
-<p>
-
-Master one of the most important chapters of Chemistry.
-
-</p>
+<p id="chapterDescription"></p>
 
 </section>
 
@@ -249,9 +245,21 @@ Start CBT 2
 
 import { loadChapter } from "./js/chapter-loader.js";
 
-const chapter = await loadChapter("atomic-structure");
+const params = new URLSearchParams(window.location.search);
 
-console.log(chapter);
+const chapterId =
+    params.get("id") || "atomic-structure";
+
+const chapter = await loadChapter(chapterId);
+
+document.title =
+    `${chapter.title} | BigyanCore Learning`;
+
+document.getElementById("chapterTitle").innerText =
+    `${chapter.emoji} ${chapter.title}`;
+
+document.getElementById("chapterDescription").innerText =
+    chapter.description;
 
 </script>
 </body>

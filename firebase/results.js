@@ -3,8 +3,12 @@ import { auth, db } from "./firebase-config.js";
 import {
     collection,
     addDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    serverTimestamp,
+    doc,
+    getDoc,
+    updateDoc
+}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 import {
     onAuthStateChanged
@@ -54,5 +58,45 @@ export async function saveQuizResult(result) {
     questionTimeSpent: result.questionTimeSpent,
     completedAt: serverTimestamp()
 });
+// ========================
+// XP Calculation
+// ========================
+
+let earnedXP = 50;
+
+// Bonus XP
+
+if (result.percentage >= 60)
+    earnedXP += 20;
+
+if (result.percentage >= 80)
+    earnedXP += 30;
+
+if (result.percentage >= 90)
+    earnedXP += 50;
+
+// Student document
+
+const studentRef = doc(
+    db,
+    "students",
+    user.uid
+);
+
+const studentSnap = await getDoc(studentRef);
+
+const studentData = studentSnap.data();
+
+const currentXP = studentData.xp || 0;
+
+await updateDoc(studentRef,{
+
+    xp: currentXP + earnedXP
+
+});
+
+console.log(
+    `⭐ Earned ${earnedXP} XP`
+);
     console.log("✅ STEP 4: Firestore write successful");
 }
