@@ -1,15 +1,17 @@
-export async function loadChapter(chapterId){
+import { chapters } from "../data/chapters.js";
 
-    const response = await fetch(
-        `data/chapters/${chapterId}.json`
+export function loadChapter(chapterId) {
+
+    const chapter = chapters.find(
+        c => c.id === chapterId
     );
 
-    if(!response.ok){
+    if (!chapter) {
 
         throw new Error("Chapter not found");
 
     }
 
-    return await response.json();
+    return chapter;
 
 }

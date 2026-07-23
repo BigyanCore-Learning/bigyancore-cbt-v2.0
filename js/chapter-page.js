@@ -1,3 +1,4 @@
+import { loadChapter } from "./chapter-loader.js";
 import {
     getQuizResults,
     calculateCBTStats,
@@ -24,7 +25,39 @@ onAuthStateChanged(auth, async (user) => {
     console.log("Current User:", currentUser);
 
     if (!currentUser) return;
+    const chapter = await loadChapter("atomic-structure");
 
+document.getElementById("pageTitle").innerText =
+    chapter.title;
+
+document.getElementById("chapterTitle").innerText =
+    `${chapter.emoji} ${chapter.title}`;
+
+document.getElementById("chapterDescription").innerText =
+    chapter.description;
+
+const cbt1 = chapter.cbts[0];
+const cbt2 = chapter.cbts[1];
+
+document.getElementById("cbt1Title").innerText =
+    `🎯 ${cbt1.title}`;
+
+document.getElementById("cbt1Info").innerHTML =
+`${cbt1.questions} Questions<br>
+${cbt1.duration} Minutes`;
+
+document.getElementById("cbt1Button").innerText =
+    cbt1.buttonText;
+
+document.getElementById("cbt2Title").innerText =
+    `🎯 ${cbt2.title}`;
+
+document.getElementById("cbt2Info").innerHTML =
+`${cbt2.questions} Questions<br>
+${cbt2.duration} Minutes`;
+
+document.getElementById("cbt2Button").innerText =
+    cbt2.buttonText;
     const snapshot = await getQuizResults(currentUser.uid);
 
     const cbtStats = calculateCBTStats(snapshot);

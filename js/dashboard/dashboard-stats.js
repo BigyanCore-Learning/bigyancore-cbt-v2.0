@@ -44,10 +44,25 @@ export function calculateDashboardStats(snapshot) {
 
         activityHTML += `
 <div class="activity-box">
-    <p>✅ ${data.chapter}</p>
-    <span>${data.percentage}%</span>
-    <small>${completedDate}</small>
-</div>`;
+
+    <div class="activity-left">
+
+        <h4>⚛ ${data.chapter}</h4>
+
+        <p>${data.cbt.toUpperCase()}</p>
+
+    </div>
+
+    <div class="activity-right">
+
+        <h3>${data.percentage}%</h3>
+
+        <small>${completedDate}</small>
+
+    </div>
+
+</div>
+`;
     });
 
     const average =

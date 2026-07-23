@@ -1,0 +1,132 @@
+/* ==========================================
+   BIGYANCORE DESIGN SYSTEM
+   common.css
+========================================== */
+
+/* ---------- RESET ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    background:#F4F8FC;
+    color:#212529;
+    line-height:1.6;
+}
+
+/* ---------- COLORS ---------- */
+
+:root{
+
+    --primary:#0D6EFD;
+    --primary-dark:#084298;
+
+    --secondary:#198754;
+    --secondary-dark:#146C43;
+
+    --warning:#FFC107;
+    --danger:#DC3545;
+
+    --white:#FFFFFF;
+
+    --text:#212529;
+    --text-light:#6C757D;
+
+    --background:#F4F8FC;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+}
+
+/* ---------- CONTAINER ---------- */
+
+.container{
+
+    width:min(1200px,92%);
+    margin:auto;
+
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+
+h1{
+
+    font-size:42px;
+    color:var(--primary);
+
+}
+
+h2{
+
+    font-size:30px;
+    color:var(--primary);
+
+}
+
+h3{
+
+    font-size:20px;
+
+}
+
+p{
+
+    color:var(--text-light);
+
+}
+
+a{
+
+    text-decoration:none;
+    color:inherit;
+
+}
+
+img{
+
+    display:block;
+    max-width:100%;
+
+}
+/* ==========================================
+   SECTION TITLES
+========================================== */
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.section-title h2{
+
+    font-size:30px;
+
+    color:var(--primary);
+
+}
+
+.section-title p{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}

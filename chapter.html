@@ -9,7 +9,7 @@
 
 <title id="pageTitle">BigyanCore Learning</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/chapter.css">
 
 </head>
 
@@ -137,20 +137,14 @@ Solve PYQs
 
 <div class="learning-card">
 
-<h2>🎯 CBT 1</h2>
+<h2 id="cbt1Title"></h2>
 
-<p>
-35 Questions<br>
-45 Minutes<br>
-Real Exam Experience
-</p>
+<p id="cbt1Info"></p>
 
 <a
 id="cbt1Button"
 href="quiz.html"
 class="primary-btn">
-Start CBT 1
-
 </a>
 
     <div class="cbt-stats">
@@ -182,20 +176,14 @@ Start CBT 1
 
 <div class="learning-card">
 
-<h2>🎯 CBT 2</h2>
+<h2 id="cbt2Title"></h2>
 
-<p>
-25 Questions<br>
-35 Minutes<br>
-Advanced Practice
-</p>
+<p id="cbt2Info"></p>
 
 <a
 id="cbt2Button"
 href="quiz.html"
 class="primary-btn">
-
-Start CBT 2
 </a>
 
     <div class="cbt-stats">
@@ -241,25 +229,6 @@ Start CBT 2
 </footer>
 
 <script type="module" src="js/chapter-page.js"></script>
-<script type="module">
-
-import { loadChapter } from "./js/chapter-loader.js";
-
-const params = new URLSearchParams(window.location.search);
-
-const chapterId =
-    params.get("id") || "atomic-structure";
-
-const chapter = await loadChapter(chapterId);
-
-document.title =
-    `${chapter.title} | BigyanCore Learning`;
-
-document.getElementById("chapterTitle").innerText =
-    `${chapter.emoji} ${chapter.title}`;
-
-document.getElementById("chapterDescription").innerText =
-    chapter.description;
 
 </script>
 </body>
