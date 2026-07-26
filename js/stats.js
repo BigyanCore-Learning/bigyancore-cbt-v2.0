@@ -25,7 +25,15 @@ export function calculateCBTStats(snapshot){
             latestScore:0,
             latestAttempt:null,
             totalTime:0
-        }
+        },
+        cbt3:{
+            attempts:0,
+            bestScore:0,
+            bestPercentage:0,
+            latestScore:0,
+            latestAttempt:null,
+            totalTime:0
+},
 
     };
 
@@ -33,7 +41,11 @@ export function calculateCBTStats(snapshot){
 
         const result=doc.data();
 
-        if(result.cbt!=="cbt1" && result.cbt!=="cbt2"){
+        if (
+            result.cbt !== "cbt1" &&
+            result.cbt !== "cbt2" &&
+            result.cbt !== "cbt3"
+        ){
             return;
         }
 
