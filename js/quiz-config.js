@@ -5,7 +5,7 @@ export const quizConfig = {
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
         duration: 45,
         totalQuestions: 35,
-        fullMarks: 35,
+        fullMarks: 140,
         instructions: [
             "মোট প্রশ্ন: 35 টি (Total Questions: 35)",
             "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে। (Time spent on each question will be tracked)",
@@ -21,7 +21,7 @@ export const quizConfig = {
         subtitle: "Advanced Practice Test",
         duration: 35,
         totalQuestions: 25,
-        fullMarks: 25,
+        fullMarks: 100,
         instructions: [
             "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
             "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে। (Time spent on each question will be tracked)",
@@ -37,7 +37,7 @@ export const quizConfig = {
         subtitle: "Advanced Practice Test - CBT 3",
         duration: 35,
         totalQuestions: 25,
-        fullMarks: 25,
+        fullMarks: 100,
         instructions: [
             "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
             "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে। (Time spent on each question will be tracked)",

@@ -32,11 +32,8 @@ return;
 
 }
 
-studentName.textContent =
-user.displayName;
-
-studentEmail.textContent =
-user.email;
+studentName.textContent = user.displayName || "Student";
+studentEmail.textContent = user.email || "";
 
 if(user.photoURL){
 
@@ -52,34 +49,25 @@ JSON.parse(
 localStorage.getItem("latestResult")
 );
 
-if(latestResult){
 
-scoreElement.textContent =
-`${latestResult.score} / ${latestResult.totalQuestions}`;
+if (latestResult) {
+    const totalMarks =
+        latestResult.totalMarks ??
+        (latestResult.totalQuestions * 4);
 
-percentageElement.textContent =
-`${latestResult.percentage}%`;
+    scoreElement.textContent =
+        `${latestResult.score} / ${totalMarks}`;
 
-if(latestResult.percentage>=90){
+    percentageElement.textContent =
+        `${latestResult.percentage}%`;
 
-gradeElement.textContent =
-"Excellent";
-
-}else if(latestResult.percentage>=75){
-
-gradeElement.textContent =
-"Very Good";
-
-}else if(latestResult.percentage>=60){
-
-gradeElement.textContent =
-"Good";
-
-}else{
-
-gradeElement.textContent =
-"Needs Improvement";
-
-}
-
+    if (latestResult.percentage >= 90) {
+        gradeElement.textContent = "Excellent";
+    } else if (latestResult.percentage >= 75) {
+        gradeElement.textContent = "Very Good";
+    } else if (latestResult.percentage >= 60) {
+        gradeElement.textContent = "Good";
+    } else {
+        gradeElement.textContent = "Needs Improvement";
+    }
 }

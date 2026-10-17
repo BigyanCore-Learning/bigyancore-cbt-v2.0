@@ -714,129 +714,115 @@ submitExam();
 
 }
 
-
 };
 
+async function submitExam() {
+    clearInterval(timerInterval);
+    clearInterval(questionTimerInterval);
 
+    saveAnswer();
 
+    let score = 0;
 
+    // JEE/NEET-style marking: +4 correct, -1 incorrect, 0 unanswered
+    questions.forEach((q, i) => {
+        let correct;
 
-async function submitExam(){
+        if (typeof q.correctAnswer === "number") {
+            correct = [String.fromCharCode(65 + q.correctAnswer)];
 
+        } else if (Array.isArray(q.correctAnswer)) {
+            correct = q.correctAnswer
+                .map(answer =>
+                    typeof answer === "number"
+                        ? String.fromCharCode(65 + answer)
+                        : String(answer)
+                )
+                .sort();
 
+        } else if (Array.isArray(q.answer)) {
+            // Legacy CBT1/CBT2 answer format
+            correct = [...q.answer].sort();
 
-clearInterval(timerInterval);
+        } else {
+            console.error("Invalid answer format for question:", q.id);
+            return;
+        }
 
-clearInterval(questionTimerInterval);
+        const given = [...(userAnswers[i] || [])].sort();
 
+        // Unanswered: 0 marks
+        if (given.length === 0) {
+            return;
+        }
 
+        // Correct: +4; incorrect: -1
+        if (JSON.stringify(given) === JSON.stringify(correct)) {
+            score += 4;
+        } else {
+            score -= 1;
+        }
+    });
 
-saveAnswer();
+    // Maximum marks: 4 marks per question
+    const totalMarks = questions.length * 4;
 
+    // Keep the raw score, including any negative score.
+    // Clamp percentage to 0–100 for display.
+    const percentage = Number(
+        Math.max(0, Math.min(100, (score / totalMarks) * 100)).toFixed(2)
+    );
 
+    // Calculate actual elapsed exam time
+    const timeTaken = Math.max(
+        0,
+        (config.duration * 60) - totalSeconds
+    );
 
-let score=0;
+    // Save result locally
+    localStorage.setItem(
+        "latestResult",
+        JSON.stringify({
+            score: score,
+            totalQuestions: questions.length,
+            totalMarks: totalMarks,
+            percentage: percentage
+        })
+    );
 
+    // Save result to Firebase
+    try {
+        await saveQuizResult({
+            subject: "Chemistry",
+            chapter: "Atomic Structure",
+            cbt: currentCBT,
+            score: score,
+            totalQuestions: questions.length,
+            totalMarks: totalMarks,
+            percentage: percentage,
+            timeTaken: timeTaken,
+            questionTimeSpent: questionTimeSpent
+        });
 
+        console.log("Quiz result saved.");
 
-
-questions.forEach((q, i) => {
-    let correct;
-
-    if (typeof q.correctAnswer === "number") {
-        // CBT3: correctAnswer is a zero-based option index
-        correct = [String.fromCharCode(65 + q.correctAnswer)];
-    } else if (Array.isArray(q.answer)) {
-        // CBT1 and CBT2: preserve the existing answer format
-        correct = [...q.answer].sort();
-    } else {
-        console.error("Invalid answer format for question:", q.id);
-        return;
+    } catch (error) {
+        console.error("Quiz result save failed:", error);
     }
 
-    const given = [...(userAnswers[i] || [])].sort();
-
-    if (JSON.stringify(given) === JSON.stringify(correct)) {
-        score++;
-    }
-});
-
-// -------------------------
-// Save Result to Firebase
-// -------------------------
-
-const percentage =
-Number(((score / questions.length) * 100).toFixed(2));
-localStorage.setItem(
-
-"latestResult",
-
-JSON.stringify({
-
-score:score,
-
-totalQuestions:questions.length,
-
-percentage:percentage
-
-})
-
-);
-const timeTaken =
-3600 - totalSeconds;
-
-try{
-
-await saveQuizResult({
-
-    subject: "Chemistry",
-
-    chapter: "Atomic Structure",
-
-    cbt: currentCBT,
-
-    score: score,
-
-    totalQuestions: questions.length,
-
-    percentage: percentage,
-
-    timeTaken: timeTaken,
-
-    questionTimeSpent: questionTimeSpent
-
-});
-
-console.log("Quiz result saved.");
-
-}catch(error){
-
-console.error(error);
-
-}
-
-// -------------------------
-// Generate Report
-// -------------------------
-
-try {
-
-    if (typeof generateReport === "function") {
-
-        generateReport(
-            score,
-            studentData,
-            userAnswers,
-            questionTimeSpent
-        );
-
+    // Generate report
+    try {
+        if (typeof generateReport === "function") {
+            generateReport(
+                score,
+                studentData,
+                userAnswers,
+                questionTimeSpent
+            );
+        }
+    } catch (error) {
+        console.error("Report generation failed:", error);
     }
 
-} catch (error) {
-
-    console.error("Report generation failed:", error);
-
-}
-
-window.location.href = "result.html";
+    window.location.href = "result.html";
 }

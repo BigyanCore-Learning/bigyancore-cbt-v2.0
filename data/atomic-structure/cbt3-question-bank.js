@@ -1,3 +1,4 @@
+
 const CBT3_QUESTION_BANK = [
   {
     id: 1,
@@ -91,7 +92,7 @@ const CBT3_QUESTION_BANK = [
   {
     id: 7,
     type: "single",
-    question: "হাইজেনবার্গের অনিশ্চয়তা নীতি অনুযায়ী, একটি ইলেকট্রনের অবস্থানের অনিশ্চয়তা শূন্য হলে তার ভরবেগের অনিশ্চয়তা (Δp) কত হবে?",
+    question: "হাইজেনবার্গের অনিশ্চয়তা নীতি অনুযায়ী, একটি ইলেকট্রনের অবস্থানের অনিশ্চয়তা ক্রমশ শূন্যের দিকে গেলে তার ভরবেগের অনিশ্চয়তা কীভাবে পরিবর্তিত হয়?",
     options: [
       "h/4π",
       "শূন্য",
@@ -135,9 +136,9 @@ const CBT3_QUESTION_BANK = [
     type: "single",
     question: "পাউলির অপবর্জন নীতি (Pauli's Exclusion Principle) অনুযায়ী নিচের কোনটি সম্ভব নয়?",
     options: [
-      "একটি কক্ষকে তিনটি ইলেকট্রন থাকা",
+      "একটি অরবিটালে তিনটি ইলেকট্রন থাকা",
       "হাইড্রোজেন পরমাণুর জন্য চারটি কোয়ান্টাম সংখ্যা থাকা",
-      "একই কক্ষকে বিপরীত স্পিনের দুটি ইলেকট্রন থাকা",
+      "একই অরবিটালে বিপরীত স্পিনের দুটি ইলেকট্রন থাকা",
       "একটি উপকক্ষে ছয়টি ইলেকট্রন থাকা"
     ],
     correctAnswer: 0,
@@ -155,7 +156,7 @@ const CBT3_QUESTION_BANK = [
       "4s < 4p < 3d"
     ],
     correctAnswer: 1,
-    explanation: "Aufbau নীতি অনুযায়ী শক্তির ক্রম: 4s < 3d < 4p। তাই ইলেকট্রন প্রথমে 4s, পরে 3d এবং শেষে 4p-তে প্রবেশ করে।",
+    explanation: "Aufbau নীতি অনুযায়ী সাধারণ ইলেকট্রন-প্রবেশের ক্রম হলো 4s < 3d < 4p। (n+l) নিয়মে 4s-এর জন্য (n+l=4) এবং 3d-এর জন্য (n+l=5); তাই সাধারণ ক্ষেত্রে 4s অরবিটাল আগে পূর্ণ হয়। তবে 4s ও 3d অরবিটালের আপেক্ষিক শক্তি পরমাণু বা আয়নের অবস্থার ওপর নির্ভর করে পরিবর্তিত হতে পারে। বিশেষ করে transition-metal আয়ন গঠনের সময় 4s-এর ইলেকট্রন সাধারণত 3d-এর ইলেকট্রনের আগে অপসারিত হয়। এই প্রশ্নে প্রত্যাশিত উত্তর হলো B (সূচক 1)।",
     difficulty: "medium",
     topic: "Atomic Structure"
   },
@@ -282,17 +283,17 @@ const CBT3_QUESTION_BANK = [
   {
     id: 20,
     type: "single",
-    question: "কোনো কণার ভর অপরিবর্তিত রেখে বেগ দ্বিগুণ করলে de Broglie তরঙ্গদৈর্ঘ্য কী হবে?",
+    question: "n = 3 প্রধান কোয়ান্টাম সংখ্যা বিশিষ্ট স্তরে মোট কতটি অরবিটাল থাকে?",
     options: [
-      "দ্বিগুণ হবে",
-      "চারগুণ হবে",
-      "অর্ধেক হবে",
-      "অপরিবর্তিত থাকবে"
+      "3",
+      "6",
+      "9",
+      "18"
     ],
     correctAnswer: 2,
-    explanation: "λ = h/mv, তাই বেগ দ্বিগুণ হলে λ অর্ধেক হয়ে যায়।",
-    difficulty: "easy",
-    topic: "Atomic Structure"
+    explanation: "একটি প্রধান শক্তিস্তরে মোট অরবিটালের সংখ্যা n²। n = 3 হলে অরবিটালের সংখ্যা = 3² = 9।",
+    difficulty: "medium",
+    topic: "Quantum Numbers"
   },
   {
     id: 21,
@@ -327,57 +328,57 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   },
   {
-    id: 23,
-    type: "single",
-    question: "Chromium (Z = 24)-এর সঠিক electronic configuration কোনটি?",
-    options: [
-      "[Ar] 3d⁴ 4s²",
-      "[Ar] 3d⁵ 4s¹",
-      "[Ar] 3d⁶ 4s⁰",
-      "[Ar] 3d³ 4s³"
-    ],
-    correctAnswer: 1,
-    explanation: "Chromium half-filled d-subshell (3d⁵) অধিক স্থিতিশীল হওয়ায় এর প্রকৃত electronic configuration হলো [Ar] 3d⁵ 4s¹।",
-    difficulty: "hard",
-    topic: "Atomic Structure",
-    marks: 4,
-    negativeMarks: 1
+  id: 23,
+  type: "single",
+  question: "একটি ধাতুর work function (φ) 2.0 eV। 300 nm তরঙ্গদৈর্ঘ্যের আলো ঐ ধাতুর পৃষ্ঠে আপতিত হলে নির্গত photoelectron-এর সর্বোচ্চ গতিশক্তি (Kₘₐₓ) কত হবে? (hc ≈ 1240 eV·nm)",
+  options: [
+    "1.13 eV",
+    "2.13 eV",
+    "4.13 eV",
+    "6.13 eV"
+  ],
+  correctAnswer: 1,
+  explanation: "আপতিত ফোটনের শক্তি E = hc/λ = 1240/300 ≈ 4.13 eV। আইনস্টাইনের photoelectric সমীকরণ অনুযায়ী, Kₘₐₓ = E − φ = 4.13 − 2.0 = 2.13 eV। তাই সঠিক উত্তর 2.13 eV।",
+  difficulty: "medium",
+  topic: "Photoelectric Effect",
+  marks: 4,
+  negativeMarks: 1
   },
-  { 
+  
+  {
     id: 24,
     type: "single",
-    question: "Hydrogen atom-এর electron যদি n = 3 থেকে n = 2 স্তরে স্থানান্তরিত হয়, তবে নির্গত বর্ণরেখাটি কোন series-এর অন্তর্গত?",
+    question: "একটি অরবিটালের ত্রিমাত্রিক স্থানের অভিমুখ (orientation) কোন কোয়ান্টাম সংখ্যা দ্বারা নির্ধারিত হয়?",
     options: [
-      "Lyman series",
-      "Balmer series",
-      "Paschen series",
-      "Brackett series"
+      "প্রধান কোয়ান্টাম সংখ্যা (n)",
+      "সহকারী বা আজিমুথাল কোয়ান্টাম সংখ্যা (l)",
+      "চৌম্বকীয় কোয়ান্টাম সংখ্যা (mₗ)",
+      "স্পিন কোয়ান্টাম সংখ্যা (mₛ)"
     ],
-    correctAnswer: 1,
-    explanation:
-      "Balmer series-এর সব transition-এর final level হলো n = 2। তাই n = 3 → n = 2 transition Balmer series-এর প্রথম রেখা (Hα)।",
+    correctAnswer: 2,
+    explanation: "চৌম্বকীয় কোয়ান্টাম সংখ্যা mₗ অরবিটালের স্থানিক অভিমুখ নির্দেশ করে।",
     difficulty: "medium",
-    topic: "Atomic Structure",
+    topic: "Quantum Numbers",
     marks: 4,
     negativeMarks: 1
   },
   {
     id: 25,
     type: "single",
-    question: "Chromium (Z = 24)-এর সঠিক electronic configuration কোনটি?",
+    question: "একটি 3d উপকক্ষে সর্বাধিক কতটি ইলেকট্রন থাকতে পারে?",
     options: [
-      "[Ar] 3d⁴ 4s²",
-      "[Ar] 3d⁵ 4s¹",
-      "[Ar] 3d⁶ 4s⁰",
-      "[Ar] 3d³ 4s³"
+      "2",
+      "6",
+      "10",
+      "14"
     ],
-    correctAnswer: 1,
-    explanation:
-      "Chromium half-filled d-subshell (3d⁵) অধিক স্থিতিশীল হওয়ায় এর প্রকৃত electronic configuration হলো [Ar] 3d⁵ 4s¹।",
-    difficulty: "hard",
-    topic: "Atomic Structure",
+    correctAnswer: 2,
+    explanation: "d উপকক্ষে 5টি অরবিটাল থাকে এবং প্রতিটি অরবিটালে সর্বাধিক 2টি ইলেকট্রন থাকতে পারে। তাই সর্বাধিক ইলেকট্রন = 5 × 2 = 10।",
+    difficulty: "medium",
+    topic: "Electronic Configuration",
     marks: 4,
     negativeMarks: 1
   }
-]
+];
+
 export default CBT3_QUESTION_BANK;
