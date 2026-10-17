@@ -40,12 +40,21 @@ export const chapters = [
     buttonText:"Start CBT 2"
 },
 
+
 {
     id:"cbt3",
     title:"CBT 3",
     questions:25,
     duration:35,
     buttonText:"Start CBT 3"
+},
+
+{
+    id:"cbt4",
+    title:"CBT 4",
+    questions:25,
+    duration:35,
+    buttonText:"Start CBT 4"
 }
 
 ]

@@ -1,3 +1,4 @@
+
 import { loadChapter } from "./chapter-loader.js";
 import {
     getQuizResults,
@@ -5,7 +6,7 @@ import {
     calculateChapterStats
 } from "./stats.js";
 
-import { auth, } from "../firebase/firebase-config.js";
+import { auth } from "../firebase/firebase-config.js";
 
 import {
     onAuthStateChanged
@@ -16,142 +17,158 @@ console.log("chapter-page.js loaded");
 const cbt1Button = document.getElementById("cbt1Button");
 const cbt2Button = document.getElementById("cbt2Button");
 const cbt3Button = document.getElementById("cbt3Button");
+const cbt4Button = document.getElementById("cbt4Button");
 
 let currentUser = null;
 
 onAuthStateChanged(auth, async (user) => {
-
     currentUser = user;
 
     console.log("Current User:", currentUser);
 
     if (!currentUser) return;
+
     const chapter = await loadChapter("atomic-structure");
 
-document.getElementById("pageTitle").innerText =
-    chapter.title;
+    document.getElementById("pageTitle").innerText =
+        chapter.title;
 
-document.getElementById("chapterTitle").innerText =
-    `${chapter.emoji} ${chapter.title}`;
+    document.getElementById("chapterTitle").innerText =
+        `${chapter.emoji} ${chapter.title}`;
 
-document.getElementById("chapterDescription").innerText =
-    chapter.description;
+    document.getElementById("chapterDescription").innerText =
+        chapter.description;
 
-const cbt1 = chapter.cbts[0];
-const cbt2 = chapter.cbts[1];
-const cbt3 = chapter.cbts[2];
+    const cbt1 = chapter.cbts[0];
+    const cbt2 = chapter.cbts[1];
+    const cbt3 = chapter.cbts[2];
+    const cbt4 = chapter.cbts[3];
 
-document.getElementById("cbt1Title").innerText =
-    `🎯 ${cbt1.title}`;
+    document.getElementById("cbt1Title").innerText =
+        `🎯 ${cbt1.title}`;
 
-document.getElementById("cbt1Info").innerHTML =
-`${cbt1.questions} Questions<br>
-${cbt1.duration} Minutes`;
+    document.getElementById("cbt1Info").innerHTML =
+        `${cbt1.questions} Questions<br>
+        ${cbt1.duration} Minutes`;
 
-document.getElementById("cbt1Button").innerText =
-    cbt1.buttonText;
+    cbt1Button.innerText = cbt1.buttonText;
 
-document.getElementById("cbt2Title").innerText =
-    `🎯 ${cbt2.title}`;
+    document.getElementById("cbt2Title").innerText =
+        `🎯 ${cbt2.title}`;
 
-document.getElementById("cbt2Info").innerHTML =
-`${cbt2.questions} Questions<br>
-${cbt2.duration} Minutes`;
+    document.getElementById("cbt2Info").innerHTML =
+        `${cbt2.questions} Questions<br>
+        ${cbt2.duration} Minutes`;
 
-document.getElementById("cbt2Button").innerText =
-    cbt2.buttonText;
-document.getElementById("cbt3Title").innerText =
-    `🎯 ${cbt3.title}`;
+    cbt2Button.innerText = cbt2.buttonText;
 
-document.getElementById("cbt3Info").innerHTML =
-`${cbt3.questions} Questions<br>
-${cbt3.duration} Minutes`;
+    document.getElementById("cbt3Title").innerText =
+        `🎯 ${cbt3.title}`;
 
-document.getElementById("cbt3Button").innerText =
-    cbt3.buttonText;
+    document.getElementById("cbt3Info").innerHTML =
+        `${cbt3.questions} Questions<br>
+        ${cbt3.duration} Minutes`;
+
+    cbt3Button.innerText = cbt3.buttonText;
+
+    document.getElementById("cbt4Title").innerText =
+        `🎯 ${cbt4.title}`;
+
+    document.getElementById("cbt4Info").innerHTML =
+        `${cbt4.questions} Questions<br>
+        ${cbt4.duration} Minutes`;
+
+    cbt4Button.innerText = cbt4.buttonText;
+
     const snapshot = await getQuizResults(currentUser.uid);
 
     const cbtStats = calculateCBTStats(snapshot);
-
     const chapterStats = calculateChapterStats(snapshot);
 
-const hours = Math.floor(chapterStats.totalTime / 3600);
+    const hours = Math.floor(chapterStats.totalTime / 3600);
 
-const minutes = Math.floor(
-    (chapterStats.totalTime % 3600) / 60
-);
+    const minutes = Math.floor(
+        (chapterStats.totalTime % 3600) / 60
+    );
 
-let timeText = "";
+    let timeText = "";
 
-if (hours > 0) {
+    if (hours > 0) {
+        timeText = `${hours}h ${minutes}m`;
+    } else {
+        timeText = `${minutes} min`;
+    }
 
-    timeText = `${hours}h ${minutes}m`;
+    document.getElementById("practiceSolved").innerText =
+        chapterStats.questionsSolved;
 
-}
-else{
+    document.getElementById("bestScore").innerText =
+        chapterStats.bestScore;
 
-    timeText = `${minutes} min`;
+    document.getElementById("timeSpent").innerText =
+        timeText;
 
-}
-document.getElementById("practiceSolved").innerText =
-    chapterStats.questionsSolved;
+    document.getElementById("notesProgress").innerText = "0%";
 
-document.getElementById("bestScore").innerText =
-    chapterStats.bestScore;
+    console.log(cbtStats);
 
-document.getElementById("timeSpent").innerText =
-    timeText;
-document.getElementById("notesProgress").innerText =
-    "0%";
-console.log(cbtStats);
-document.getElementById("cbt1Attempts").innerText =
-    `Attempts : ${cbtStats.cbt1.attempts}`;
+    document.getElementById("cbt1Attempts").innerText =
+        `Attempts : ${cbtStats.cbt1.attempts}`;
 
-document.getElementById("cbt1BestScore").innerText =
-    `Best Score : ${cbtStats.cbt1.bestScore}`;
-document.getElementById("cbt1Percentage").innerText =
-    `Best Percentage : ${cbtStats.cbt1.bestPercentage}%`;
-document.getElementById("cbt2Attempts").innerText =
-    `Attempts : ${cbtStats.cbt2.attempts}`;
+    document.getElementById("cbt1BestScore").innerText =
+        `Best Score : ${cbtStats.cbt1.bestScore}`;
 
-document.getElementById("cbt2BestScore").innerText =
-    `Best Score : ${cbtStats.cbt2.bestScore}`;
-document.getElementById("cbt2Percentage").innerText =
-    `Best Percentage : ${cbtStats.cbt2.bestPercentage}%`;
-document.getElementById("cbt3Attempts").innerText =
-    `Attempts : ${cbtStats.cbt3.attempts}`;
+    document.getElementById("cbt1Percentage").innerText =
+        `Best Percentage : ${cbtStats.cbt1.bestPercentage}%`;
 
-document.getElementById("cbt3BestScore").innerText =
-    `Best Score : ${cbtStats.cbt3.bestScore}`;
+    document.getElementById("cbt2Attempts").innerText =
+        `Attempts : ${cbtStats.cbt2.attempts}`;
 
-document.getElementById("cbt3Percentage").innerText =
-    `Best Percentage : ${cbtStats.cbt3.bestPercentage}%`;
+    document.getElementById("cbt2BestScore").innerText =
+        `Best Score : ${cbtStats.cbt2.bestScore}`;
+
+    document.getElementById("cbt2Percentage").innerText =
+        `Best Percentage : ${cbtStats.cbt2.bestPercentage}%`;
+
+    document.getElementById("cbt3Attempts").innerText =
+        `Attempts : ${cbtStats.cbt3.attempts}`;
+
+    document.getElementById("cbt3BestScore").innerText =
+        `Best Score : ${cbtStats.cbt3.bestScore}`;
+
+    document.getElementById("cbt3Percentage").innerText =
+        `Best Percentage : ${cbtStats.cbt3.bestPercentage}%`;
+
+    document.getElementById("cbt4Attempts").innerText =
+        `Attempts : ${cbtStats.cbt4.attempts}`;
+
+    document.getElementById("cbt4BestScore").innerText =
+        `Best Score : ${cbtStats.cbt4.bestScore}`;
+
+    document.getElementById("cbt4Percentage").innerText =
+        `Best Percentage : ${cbtStats.cbt4.bestPercentage}%`;
 });
+
 cbt1Button.addEventListener("click", (e) => {
-
     e.preventDefault();
-
     localStorage.setItem("currentCBT", "cbt1");
-
     window.location.href = "quiz.html";
-
 });
 
 cbt2Button.addEventListener("click", (e) => {
-
     e.preventDefault();
-
     localStorage.setItem("currentCBT", "cbt2");
-
     window.location.href = "quiz.html";
-
 });
+
 cbt3Button.addEventListener("click", (e) => {
-
     e.preventDefault();
-
     localStorage.setItem("currentCBT", "cbt3");
-
     window.location.href = "quiz.html";
+});
 
+cbt4Button.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.setItem("currentCBT", "cbt4");
+    window.location.href = "quiz.html";
 });

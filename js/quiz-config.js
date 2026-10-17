@@ -46,5 +46,21 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।",
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
+    },
+    cbt4: {
+        title: "পরমাণুর গঠন (Atomic Structure) - CBT 4",
+        subtitle: "WBCHSE + NCERT + JEE/NEET Foundation Test - CBT 4",
+        duration: 35,
+        totalQuestions: 25,
+        fullMarks: 100,
+        instructions: [
+            "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে। (Time spent on each question will be tracked)",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।",
+            "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
+        ]
     }
+
 };

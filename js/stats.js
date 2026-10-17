@@ -1,3 +1,4 @@
+
 import { db } from "../firebase/firebase-config.js";
 
 import {
@@ -5,67 +6,69 @@ import {
     getDocs
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-export function calculateCBTStats(snapshot){
-
+export function calculateCBTStats(snapshot) {
     const cbtStats = {
-
-        cbt1:{
-            attempts:0,
-            bestScore:0,
-            bestPercentage:0,
-            latestScore:0,
-            latestAttempt:null,
-            totalTime:0
+        cbt1: {
+            attempts: 0,
+            bestScore: 0,
+            bestPercentage: 0,
+            latestScore: 0,
+            latestAttempt: null,
+            totalTime: 0
         },
 
-        cbt2:{
-            attempts:0,
-            bestScore:0,
-            bestPercentage:0,
-            latestScore:0,
-            latestAttempt:null,
-            totalTime:0
+        cbt2: {
+            attempts: 0,
+            bestScore: 0,
+            bestPercentage: 0,
+            latestScore: 0,
+            latestAttempt: null,
+            totalTime: 0
         },
-        cbt3:{
-            attempts:0,
-            bestScore:0,
-            bestPercentage:0,
-            latestScore:0,
-            latestAttempt:null,
-            totalTime:0
-},
 
+        cbt3: {
+            attempts: 0,
+            bestScore: 0,
+            bestPercentage: 0,
+            latestScore: 0,
+            latestAttempt: null,
+            totalTime: 0
+        },
+
+        cbt4: {
+            attempts: 0,
+            bestScore: 0,
+            bestPercentage: 0,
+            latestScore: 0,
+            latestAttempt: null,
+            totalTime: 0
+        }
     };
 
-    snapshot.forEach(doc=>{
+    snapshot.forEach(doc => {
+        const result = doc.data();
 
-        const result=doc.data();
-
-        if (
-            result.cbt !== "cbt1" &&
-            result.cbt !== "cbt2" &&
-            result.cbt !== "cbt3"
-        ){
+        if (!cbtStats[result.cbt]) {
             return;
         }
 
-        cbtStats[result.cbt].attempts++;
+        const stats = cbtStats[result.cbt];
 
-        if(result.score>cbtStats[result.cbt].bestScore){
-            cbtStats[result.cbt].bestScore=result.score;
+        stats.attempts++;
+
+        if (result.score > stats.bestScore) {
+            stats.bestScore = result.score;
         }
 
-        if(result.percentage>cbtStats[result.cbt].bestPercentage){
-            cbtStats[result.cbt].bestPercentage=result.percentage;
+        if (result.percentage > stats.bestPercentage) {
+            stats.bestPercentage = result.percentage;
         }
-
     });
 
     return cbtStats;
-
 }
-export async function getQuizResults(uid){
 
+export async function getQuizResults(uid) {
     const quizRef = collection(
         db,
         "students",
@@ -76,38 +79,26 @@ export async function getQuizResults(uid){
     const snapshot = await getDocs(quizRef);
 
     return snapshot;
-
 }
-export function calculateChapterStats(snapshot){
 
+export function calculateChapterStats(snapshot) {
     const chapterStats = {
-
         totalTime: 0,
-
         bestScore: 0,
-
         questionsSolved: 0,
-
         notesProgress: 0
-
     };
 
-    snapshot.forEach(doc=>{
-
+    snapshot.forEach(doc => {
         const result = doc.data();
 
         chapterStats.totalTime += result.timeTaken || 0;
-
         chapterStats.questionsSolved += result.totalQuestions || 0;
 
-        if(result.score > chapterStats.bestScore){
-
+        if (result.score > chapterStats.bestScore) {
             chapterStats.bestScore = result.score;
-
         }
-
     });
 
     return chapterStats;
-
 }
