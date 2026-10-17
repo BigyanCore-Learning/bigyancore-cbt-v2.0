@@ -477,20 +477,21 @@ saveAnswer
 // -------------------------
 
 
-document
-.getElementById("hintBtn")
-.onclick=function(){
 
+document.getElementById("hintBtn").onclick = function () {
+    const box = document.getElementById("hintBox");
+    const q = questions[currentQuestion];
 
-let box=
-document.getElementById("hintBox");
+    if (box.classList.contains("hidden")) {
+        box.textContent =
+            q.hint || q.explanation || "এই প্রশ্নের জন্য কোনো hint দেওয়া নেই।";
 
-
-
-box.classList.toggle("hidden");
-
-
+        box.classList.remove("hidden");
+    } else {
+        box.classList.add("hidden");
+    }
 };
+
 
 // -------------------------
 // Navigation
@@ -738,39 +739,27 @@ let score=0;
 
 
 
-questions.forEach((q,i)=>{
 
+questions.forEach((q, i) => {
+    let correct;
 
-let correct=
-JSON.stringify(
-q.answer.sort()
-);
+    if (typeof q.correctAnswer === "number") {
+        // CBT3: correctAnswer is a zero-based option index
+        correct = [String.fromCharCode(65 + q.correctAnswer)];
+    } else if (Array.isArray(q.answer)) {
+        // CBT1 and CBT2: preserve the existing answer format
+        correct = [...q.answer].sort();
+    } else {
+        console.error("Invalid answer format for question:", q.id);
+        return;
+    }
 
+    const given = [...(userAnswers[i] || [])].sort();
 
-
-let given=
-(userAnswers[i]||[])
-.sort();
-
-
-
-if(
-JSON.stringify(given)
-===
-correct
-){
-
-score++;
-
-}
-
-
+    if (JSON.stringify(given) === JSON.stringify(correct)) {
+        score++;
+    }
 });
-
-
-
-
-document
 
 // -------------------------
 // Save Result to Firebase

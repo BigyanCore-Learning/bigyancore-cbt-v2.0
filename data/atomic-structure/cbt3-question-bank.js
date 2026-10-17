@@ -1,4 +1,4 @@
-const questions = [
+const CBT3_QUESTION_BANK = [
   {
     id: 1,
     type: "single",
@@ -342,9 +342,7 @@ const questions = [
     topic: "Atomic Structure",
     marks: 4,
     negativeMarks: 1
-  }
-];
-  [
+  },
   { 
     id: 24,
     type: "single",
