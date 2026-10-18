@@ -18,6 +18,7 @@ const cbt1Button = document.getElementById("cbt1Button");
 const cbt2Button = document.getElementById("cbt2Button");
 const cbt3Button = document.getElementById("cbt3Button");
 const cbt4Button = document.getElementById("cbt4Button");
+const cbt5Button = document.getElementById("cbt5Button");
 
 let currentUser = null;
 
@@ -43,6 +44,7 @@ onAuthStateChanged(auth, async (user) => {
     const cbt2 = chapter.cbts[1];
     const cbt3 = chapter.cbts[2];
     const cbt4 = chapter.cbts[3];
+    const cbt5 = chapter.cbts[4];
 
     document.getElementById("cbt1Title").innerText =
         `🎯 ${cbt1.title}`;
@@ -79,6 +81,14 @@ onAuthStateChanged(auth, async (user) => {
         ${cbt4.duration} Minutes`;
 
     cbt4Button.innerText = cbt4.buttonText;
+    document.getElementById("cbt5Title").innerText =
+    `🎯 ${cbt5.title}`;
+
+    document.getElementById("cbt5Info").innerHTML =
+    `${cbt5.questions} Questions<br>
+    ${cbt5.duration} Minutes`;
+
+    cbt5Button.innerText = cbt5.buttonText;
 
     const snapshot = await getQuizResults(currentUser.uid);
 
@@ -147,6 +157,14 @@ onAuthStateChanged(auth, async (user) => {
 
     document.getElementById("cbt4Percentage").innerText =
         `Best Percentage : ${cbtStats.cbt4.bestPercentage}%`;
+    document.getElementById("cbt5Attempts").innerText =
+    `Attempts : ${cbtStats.cbt5.attempts}`;
+
+document.getElementById("cbt5BestScore").innerText =
+    `Best Score : ${cbtStats.cbt5.bestScore}`;
+
+document.getElementById("cbt5Percentage").innerText =
+    `Best Percentage : ${cbtStats.cbt5.bestPercentage}%`;
 });
 
 cbt1Button.addEventListener("click", (e) => {
@@ -170,5 +188,11 @@ cbt3Button.addEventListener("click", (e) => {
 cbt4Button.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("currentCBT", "cbt4");
+    window.location.href = "quiz.html";
+
+});
+cbt5Button.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.setItem("currentCBT", "cbt5");
     window.location.href = "quiz.html";
 });

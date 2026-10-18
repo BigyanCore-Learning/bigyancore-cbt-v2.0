@@ -20,6 +20,10 @@ export async function loadQuestions() {
         questions = (
             await import("../data/atomic-structure/cbt4-question-bank.js")
         ).default;
+    } else if (currentCBT === "cbt5") {
+        questions = (
+            await import("../data/atomic-structure/cbt5-question-bank.js")
+        ).default;
     } else {
         questions = (
             await import("../data/atomic-structure/question-bank.js")

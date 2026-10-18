@@ -35,7 +35,16 @@ export function calculateCBTStats(snapshot) {
             totalTime: 0
         },
 
-        cbt4: {
+                cbt4: {
+            attempts: 0,
+            bestScore: 0,
+            bestPercentage: 0,
+            latestScore: 0,
+            latestAttempt: null,
+            totalTime: 0
+        },
+
+        cbt5: {
             attempts: 0,
             bestScore: 0,
             bestPercentage: 0,
