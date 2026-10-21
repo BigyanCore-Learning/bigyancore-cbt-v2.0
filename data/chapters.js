@@ -63,6 +63,14 @@ export const chapters = [
     questions:26,
     duration:35,
     buttonText:"Start CBT 5"
+},
+
+{
+    id:"cbt6",
+    title:"CBT 6",
+    questions:58,
+    duration:60,
+    buttonText:"Start CBT 6"
 }
 ]
 }

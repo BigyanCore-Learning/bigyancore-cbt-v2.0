@@ -19,6 +19,7 @@ const cbt2Button = document.getElementById("cbt2Button");
 const cbt3Button = document.getElementById("cbt3Button");
 const cbt4Button = document.getElementById("cbt4Button");
 const cbt5Button = document.getElementById("cbt5Button");
+const cbt6Button = document.getElementById("cbt6Button");
 
 let currentUser = null;
 
@@ -45,6 +46,7 @@ onAuthStateChanged(auth, async (user) => {
     const cbt3 = chapter.cbts[2];
     const cbt4 = chapter.cbts[3];
     const cbt5 = chapter.cbts[4];
+    const cbt6 = chapter.cbts[5];
 
     document.getElementById("cbt1Title").innerText =
         `🎯 ${cbt1.title}`;
@@ -89,6 +91,14 @@ onAuthStateChanged(auth, async (user) => {
     ${cbt5.duration} Minutes`;
 
     cbt5Button.innerText = cbt5.buttonText;
+        document.getElementById("cbt6Title").innerText =
+        `🎯 ${cbt6.title}`;
+
+    document.getElementById("cbt6Info").innerHTML =
+        `${cbt6.questions} Questions<br>
+        ${cbt6.duration} Minutes`;
+
+    cbt6Button.innerText = cbt6.buttonText;
 
     const snapshot = await getQuizResults(currentUser.uid);
 
@@ -165,6 +175,14 @@ document.getElementById("cbt5BestScore").innerText =
 
 document.getElementById("cbt5Percentage").innerText =
     `Best Percentage : ${cbtStats.cbt5.bestPercentage}%`;
+document.getElementById("cbt6Attempts").innerText =
+    `Attempts : ${cbtStats.cbt6.attempts}`;
+
+document.getElementById("cbt6BestScore").innerText =
+    `Best Score : ${cbtStats.cbt6.bestScore}`;
+
+document.getElementById("cbt6Percentage").innerText =
+    `Best Percentage : ${cbtStats.cbt6.bestPercentage}%`;
 });
 
 cbt1Button.addEventListener("click", (e) => {
@@ -191,8 +209,15 @@ cbt4Button.addEventListener("click", (e) => {
     window.location.href = "quiz.html";
 
 });
+
 cbt5Button.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("currentCBT", "cbt5");
+    window.location.href = "quiz.html";
+});
+
+cbt6Button.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.setItem("currentCBT", "cbt6");
     window.location.href = "quiz.html";
 });

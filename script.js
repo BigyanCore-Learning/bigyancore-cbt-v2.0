@@ -245,51 +245,28 @@ timerInterval=setInterval(()=>{
 // -------------------------
 
 
-function startQuestionTimer(){
 
+function startQuestionTimer() {
+    clearInterval(questionTimerInterval);
 
-clearInterval(questionTimerInterval);
+    currentQuestionSeconds = 0;
+    
 
+    questionTimerInterval = setInterval(() => {
+        currentQuestionSeconds++;
 
-currentQuestionSeconds=0;
-
-
-
-questionTimerInterval=
-setInterval(()=>{
-
-
-currentQuestionSeconds++;
-
-
-document
-.getElementById("questionTimer")
-.innerHTML=
-formatTime(currentQuestionSeconds);
-
-
-
-},1000);
-
-
+        document.getElementById("questionTimer").innerHTML =
+            formatTime(currentQuestionSeconds);
+    }, 1000);
 }
 
+function formatTime(seconds) {
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
 
-
-function formatTime(seconds){
-
-
-let min=
-Math.floor(seconds/60);
-
-
-let sec=
-seconds%60;
-
-
-return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
-
+    return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 }
+
 
 // -------------------------
 // Display Question
@@ -717,10 +694,23 @@ submitExam();
 };
 
 async function submitExam() {
-    clearInterval(timerInterval);
-    clearInterval(questionTimerInterval);
+    
+clearInterval(timerInterval);
+clearInterval(questionTimerInterval);
 
-    saveAnswer();
+// Record time spent on the current question
+if (
+    questionStartTime[currentQuestion] &&
+    questionTimeSpent[currentQuestion] !== undefined
+) {
+    questionTimeSpent[currentQuestion] += currentQuestionSeconds;
+}
+
+// Record time spent on the current question
+questionTimeSpent[currentQuestion] += currentQuestionSeconds;
+
+saveAnswer();
+
 
     let score = 0;
 
