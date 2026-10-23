@@ -28,9 +28,14 @@ onAuthStateChanged(auth, async (user) => {
 
     console.log("Current User:", currentUser);
 
-    if (!currentUser) return;
+    
+const chapter = await loadChapter("atomic-structure");
 
-    const chapter = await loadChapter("atomic-structure");
+if (!chapter) {
+    console.error("Chapter data not found.");
+    return;
+}
+
 
     document.getElementById("pageTitle").innerText =
         chapter.title;
@@ -100,7 +105,23 @@ onAuthStateChanged(auth, async (user) => {
 
     cbt6Button.innerText = cbt6.buttonText;
 
-    const snapshot = await getQuizResults(currentUser.uid);
+    if (!currentUser) {
+    console.log("Visitor is not logged in. Showing public chapter content.");
+
+    for (let i = 1; i <= 6; i++) {
+        document.getElementById(`cbt${i}Attempts`).innerText =
+            "Attempts : —";
+
+        document.getElementById(`cbt${i}BestScore`).innerText =
+            "Best Score : —";
+
+        document.getElementById(`cbt${i}Percentage`).innerText =
+            "Best Percentage : —";
+    }
+
+    return;
+}
+const snapshot = await getQuizResults(currentUser.uid);
 
     const cbtStats = calculateCBTStats(snapshot);
     const chapterStats = calculateChapterStats(snapshot);
