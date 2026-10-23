@@ -11,11 +11,23 @@ async function initializeQuiz() {
 
 await initializeQuiz();
 
+
+const currentChapter =
+    localStorage.getItem("currentChapter") || "atomic-structure";
+
 const currentCBT =
     localStorage.getItem("currentCBT") || "cbt1";
 
-const config =
-    quizConfig[currentCBT];
+const configKey =
+    currentChapter === "chemical-bonding"
+        ? `${currentChapter}-${currentCBT}`
+        : currentCBT;
+
+const config = quizConfig[configKey];
+
+if (!config) {
+    throw new Error(`Quiz configuration not found: ${configKey}`);
+}
 document.getElementById("quizTitle").innerText =
     config.title;
 
@@ -289,9 +301,7 @@ function showQuestion(index) {
 
     currentQuestion = index;
 
-    questionStartTime[index] = Date.now();
-
-    startQuestionTimer();
+    let q = questions[index];
 
 
 
@@ -300,12 +310,6 @@ questionStartTime[index]=Date.now();
 
 
 startQuestionTimer();
-
-
-
-let q=questions[index];
-
-
 
 document
 .getElementById("questionNumber")
@@ -715,7 +719,7 @@ async function submitExam() {
 
     let score = 0;
 
-    // JEE/NEET-style marking: +4 correct, -1 incorrect, 0 unanswered
+    // JEE/NEET-style marking: +F correct, -1 incorrect, 0 unanswered
     questions.forEach((q, i) => {
         let correct;
 

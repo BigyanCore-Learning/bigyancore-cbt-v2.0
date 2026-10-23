@@ -94,7 +94,21 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।",
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
-    }
+        },
 
+    "chemical-bonding-cbt1": {
+        title: "Chemical Bonding and Molecular Structure - CBT 1",
+        subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
+        duration: 35,
+        totalQuestions: 25,
+        fullMarks: 100,
+        instructions: [
+            "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
+            "পূর্ণমান: 100 (Full Marks: 100)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
+        ]
+    }
 
 };

@@ -74,9 +74,24 @@ if (currentChapter === "classification-periodicity") {
             throw new Error(`Unknown Atomic Structure CBT: ${currentCBT}`);
         }
 
+    
+    } else if (currentChapter === "chemical-bonding") {
+
+        if (currentCBT === "cbt1") {
+            questions = (
+                await import("../data/chemical-bonding/cbt1-question-bank.js")
+            ).default;
+
+        } else {
+            throw new Error(
+                `CBT "${currentCBT}" is not configured for ${currentChapter}.`
+            );
+        }
+
     } else {
         throw new Error(`Unknown chapter: ${currentChapter}`);
     }
+
 
     console.log("Current Chapter:", currentChapter);
     console.log("Current CBT:", currentCBT);

@@ -105,6 +105,38 @@ export const chapters = [
   { id: "cbt4", title: "CBT 4", questions: 25, duration: 35, buttonText: "Start CBT 4" }
 ]
 
+},
+{
+    id: "chemical-bonding",
+
+    title: "Chemical Bonding and Molecular Structure",
+
+    subject: "Chemistry",
+
+    class: 11,
+
+    emoji: "⚗️",
+
+    description:
+        "Understand ionic and covalent bonding, molecular shapes, and chemical bonding theories.",
+
+    page: "chapter.html",
+
+    notes: false,
+
+    practice: false,
+
+    pyq: false,
+
+    cbts: [
+        {
+            id: "cbt1",
+            title: "CBT 1",
+            questions: 25,
+            duration: 35,
+            buttonText: "Start CBT 1"
+        }
+    ]
 }
 
 ];
