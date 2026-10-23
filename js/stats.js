@@ -6,7 +6,7 @@ import {
     getDocs
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-export function calculateCBTStats(snapshot) {
+export function calculateCBTStats(snapshot, chapterName) {
     const cbtStats = {
         cbt1: {
             attempts: 0,
@@ -65,7 +65,9 @@ export function calculateCBTStats(snapshot) {
 
     snapshot.forEach(doc => {
         const result = doc.data();
-
+        if (chapterName && result.chapter !== chapterName) {
+    return;
+}
         if (!cbtStats[result.cbt]) {
             return;
         }
@@ -99,7 +101,7 @@ export async function getQuizResults(uid) {
     return snapshot;
 }
 
-export function calculateChapterStats(snapshot) {
+export function calculateChapterStats(snapshot, chapterName) {
     const chapterStats = {
         totalTime: 0,
         bestScore: 0,
@@ -109,7 +111,9 @@ export function calculateChapterStats(snapshot) {
 
     snapshot.forEach(doc => {
         const result = doc.data();
-
+        if (result.chapter !== chapterName) {
+    return;
+}
         chapterStats.totalTime += result.timeTaken || 0;
         chapterStats.questionsSolved += result.totalQuestions || 0;
 

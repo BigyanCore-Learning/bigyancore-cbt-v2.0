@@ -22,6 +22,8 @@ document.getElementById("percentage");
 const gradeElement =
 document.getElementById("grade");
 
+const chapterNameElement =
+document.getElementById("chapter-name");
 onAuthStateChanged(auth,(user)=>{
 
 if(!user){
@@ -48,6 +50,16 @@ const latestResult =
 JSON.parse(
 localStorage.getItem("latestResult")
 );
+
+if (latestResult) {
+    const chapterTitles = {
+        "atomic-structure": "Structure of Atom",
+        "classification-periodicity": "Classification of Elements and Periodicity in Properties"
+    };
+
+    chapterNameElement.textContent =
+        chapterTitles[latestResult.chapterId] || "Structure of Atom";
+}
 
 
 if (latestResult) {

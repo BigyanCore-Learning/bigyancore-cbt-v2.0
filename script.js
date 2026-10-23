@@ -244,7 +244,15 @@ timerInterval=setInterval(()=>{
 // Question Timer
 // -------------------------
 
+function recordCurrentQuestionTime() {
+    if (
+        questionTimeSpent[currentQuestion] !== undefined
+    ) {
+        questionTimeSpent[currentQuestion] += currentQuestionSeconds;
+    }
 
+    currentQuestionSeconds = 0;
+}
 
 function startQuestionTimer() {
     clearInterval(questionTimerInterval);
@@ -273,14 +281,17 @@ function formatTime(seconds) {
 // -------------------------
 
 
-function showQuestion(index){
+function showQuestion(index) {
 
+    recordCurrentQuestionTime();
 
-clearInterval(questionTimerInterval);
+    clearInterval(questionTimerInterval);
 
+    currentQuestion = index;
 
+    questionStartTime[index] = Date.now();
 
-currentQuestion=index;
+    startQuestionTimer();
 
 
 
@@ -694,23 +705,13 @@ submitExam();
 };
 
 async function submitExam() {
-    
-clearInterval(timerInterval);
-clearInterval(questionTimerInterval);
 
-// Record time spent on the current question
-if (
-    questionStartTime[currentQuestion] &&
-    questionTimeSpent[currentQuestion] !== undefined
-) {
-    questionTimeSpent[currentQuestion] += currentQuestionSeconds;
-}
+    recordCurrentQuestionTime();
 
-// Record time spent on the current question
-questionTimeSpent[currentQuestion] += currentQuestionSeconds;
+    clearInterval(timerInterval);
+    clearInterval(questionTimerInterval);
 
-saveAnswer();
-
+    saveAnswer();
 
     let score = 0;
 
@@ -769,6 +770,7 @@ saveAnswer();
         (config.duration * 60) - totalSeconds
     );
 
+    
     // Save result locally
     localStorage.setItem(
         "latestResult",
@@ -776,15 +778,19 @@ saveAnswer();
             score: score,
             totalQuestions: questions.length,
             totalMarks: totalMarks,
-            percentage: percentage
+            percentage: percentage,
+            chapterId: localStorage.getItem("currentChapter") || "atomic-structure"
         })
     );
+
 
     // Save result to Firebase
     try {
         await saveQuizResult({
             subject: "Chemistry",
-            chapter: "Atomic Structure",
+            chapter: localStorage.getItem("currentChapter") === "classification-periodicity"
+    ? "Classification of Elements and Periodicity in Properties"
+    : "Atomic Structure",
             cbt: currentCBT,
             score: score,
             totalQuestions: questions.length,

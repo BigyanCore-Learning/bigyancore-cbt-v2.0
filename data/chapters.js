@@ -1,3 +1,4 @@
+
 export const chapters = [
 
 {
@@ -24,55 +25,86 @@ export const chapters = [
 
     cbts: [
 
-{
-    id:"cbt1",
-    title:"CBT 1",
-    questions:35,
-    duration:45,
-    buttonText:"Start CBT 1"
+        {
+            id: "cbt1",
+            title: "CBT 1",
+            questions: 35,
+            duration: 45,
+            buttonText: "Start CBT 1"
+        },
+
+        {
+            id: "cbt2",
+            title: "CBT 2",
+            questions: 25,
+            duration: 35,
+            buttonText: "Start CBT 2"
+        },
+
+        {
+            id: "cbt3",
+            title: "CBT 3",
+            questions: 25,
+            duration: 35,
+            buttonText: "Start CBT 3"
+        },
+
+        {
+            id: "cbt4",
+            title: "CBT 4",
+            questions: 25,
+            duration: 35,
+            buttonText: "Start CBT 4"
+        },
+
+        {
+            id: "cbt5",
+            title: "CBT 5",
+            questions: 26,
+            duration: 35,
+            buttonText: "Start CBT 5"
+        },
+
+        {
+            id: "cbt6",
+            title: "CBT 6",
+            questions: 58,
+            duration: 60,
+            buttonText: "Start CBT 6"
+        }
+
+    ]
 },
 
 {
-    id:"cbt2",
-    title:"CBT 2",
-    questions:25,
-    duration:35,
-    buttonText:"Start CBT 2"
-},
+    id: "classification-periodicity",
 
+    title: "Classification of Elements and Periodicity in Properties",
 
-{
-    id:"cbt3",
-    title:"CBT 3",
-    questions:25,
-    duration:35,
-    buttonText:"Start CBT 3"
-},
+    subject: "Chemistry",
 
-{
-    id:"cbt4",
-    title:"CBT 4",
-    questions:25,
-    duration:35,
-    buttonText:"Start CBT 4"
-},
+    class: 11,
 
-{
-    id:"cbt5",
-    title:"CBT 5",
-    questions:26,
-    duration:35,
-    buttonText:"Start CBT 5"
-},
+    emoji: "🧪",
 
-{
-    id:"cbt6",
-    title:"CBT 6",
-    questions:58,
-    duration:60,
-    buttonText:"Start CBT 6"
-}
+    description:
+        "Explore the periodic table and the periodic trends of chemical properties.",
+
+    page: "chapter.html",
+
+    notes: false,
+
+    practice: false,
+
+    pyq: false,
+
+  cbts: [
+  { id: "cbt1", title: "CBT 1", questions: 25, duration: 35, buttonText: "Start CBT 1" },
+  { id: "cbt2", title: "CBT 2", questions: 25, duration: 35, buttonText: "Start CBT 2" },
+  { id: "cbt3", title: "CBT 3", questions: 25, duration: 35, buttonText: "Start CBT 3" },
+  { id: "cbt4", title: "CBT 4", questions: 25, duration: 35, buttonText: "Start CBT 4" }
 ]
+
 }
 
 ];

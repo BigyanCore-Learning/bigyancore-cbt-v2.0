@@ -1,5 +1,6 @@
 
 import { loadChapter } from "./chapter-loader.js";
+
 import {
     getQuizResults,
     calculateCBTStats,
@@ -14,31 +15,31 @@ import {
 
 console.log("chapter-page.js loaded");
 
-const cbt1Button = document.getElementById("cbt1Button");
-const cbt2Button = document.getElementById("cbt2Button");
-const cbt3Button = document.getElementById("cbt3Button");
-const cbt4Button = document.getElementById("cbt4Button");
-const cbt5Button = document.getElementById("cbt5Button");
-const cbt6Button = document.getElementById("cbt6Button");
-
 let currentUser = null;
+let chapter = null;
+
+const params = new URLSearchParams(window.location.search);
+const chapterId = params.get("id") || "atomic-structure";
+
+const cbtButtons = {};
+
+for (let i = 1; i <= 6; i++) {
+    cbtButtons[`cbt${i}`] = document.getElementById(`cbt${i}Button`);
+}
 
 onAuthStateChanged(auth, async (user) => {
     currentUser = user;
 
     console.log("Current User:", currentUser);
 
-    
-const chapter = await loadChapter("atomic-structure");
+    try {
+        chapter = loadChapter(chapterId);
+    } catch (error) {
+        console.error("Chapter data not found:", error);
+        return;
+    }
 
-if (!chapter) {
-    console.error("Chapter data not found.");
-    return;
-}
-
-
-    document.getElementById("pageTitle").innerText =
-        chapter.title;
+    document.getElementById("pageTitle").innerText = chapter.title;
 
     document.getElementById("chapterTitle").innerText =
         `${chapter.emoji} ${chapter.title}`;
@@ -46,199 +47,144 @@ if (!chapter) {
     document.getElementById("chapterDescription").innerText =
         chapter.description;
 
-    const cbt1 = chapter.cbts[0];
-    const cbt2 = chapter.cbts[1];
-    const cbt3 = chapter.cbts[2];
-    const cbt4 = chapter.cbts[3];
-    const cbt5 = chapter.cbts[4];
-    const cbt6 = chapter.cbts[5];
+    // Show only the CBT cards configured for this chapter.
+    for (let i = 1; i <= 6; i++) {
+        const card = document.getElementById(`cbt${i}Card`);
 
-    document.getElementById("cbt1Title").innerText =
-        `🎯 ${cbt1.title}`;
+        if (card) {
+            card.style.display = "none";
+        }
+    }
 
-    document.getElementById("cbt1Info").innerHTML =
-        `${cbt1.questions} Questions<br>
-        ${cbt1.duration} Minutes`;
+    chapter.cbts.forEach((cbt, index) => {
+        const number = index + 1;
+        const card = document.getElementById(`cbt${number}Card`);
 
-    cbt1Button.innerText = cbt1.buttonText;
+        if (!card) {
+            console.error(`Missing HTML card for CBT ${number}`);
+            return;
+        }
 
-    document.getElementById("cbt2Title").innerText =
-        `🎯 ${cbt2.title}`;
+        card.style.display = "";
 
-    document.getElementById("cbt2Info").innerHTML =
-        `${cbt2.questions} Questions<br>
-        ${cbt2.duration} Minutes`;
+        document.getElementById(`cbt${number}Title`).innerText =
+            `🎯 ${cbt.title}`;
 
-    cbt2Button.innerText = cbt2.buttonText;
+        document.getElementById(`cbt${number}Info`).innerHTML =
+            `${cbt.questions} Questions<br>${cbt.duration} Minutes`;
 
-    document.getElementById("cbt3Title").innerText =
-        `🎯 ${cbt3.title}`;
+        cbtButtons[`cbt${number}`].innerText = cbt.buttonText;
 
-    document.getElementById("cbt3Info").innerHTML =
-        `${cbt3.questions} Questions<br>
-        ${cbt3.duration} Minutes`;
+        // Reset displayed statistics before loading saved results.
+        document.getElementById(`cbt${number}Attempts`).innerText =
+            "Attempts : 0";
 
-    cbt3Button.innerText = cbt3.buttonText;
+        document.getElementById(`cbt${number}BestScore`).innerText =
+            "Best Score : --";
 
-    document.getElementById("cbt4Title").innerText =
-        `🎯 ${cbt4.title}`;
-
-    document.getElementById("cbt4Info").innerHTML =
-        `${cbt4.questions} Questions<br>
-        ${cbt4.duration} Minutes`;
-
-    cbt4Button.innerText = cbt4.buttonText;
-    document.getElementById("cbt5Title").innerText =
-    `🎯 ${cbt5.title}`;
-
-    document.getElementById("cbt5Info").innerHTML =
-    `${cbt5.questions} Questions<br>
-    ${cbt5.duration} Minutes`;
-
-    cbt5Button.innerText = cbt5.buttonText;
-        document.getElementById("cbt6Title").innerText =
-        `🎯 ${cbt6.title}`;
-
-    document.getElementById("cbt6Info").innerHTML =
-        `${cbt6.questions} Questions<br>
-        ${cbt6.duration} Minutes`;
-
-    cbt6Button.innerText = cbt6.buttonText;
+        document.getElementById(`cbt${number}Percentage`).innerText =
+            "Best Percentage : --";
+    });
 
     if (!currentUser) {
-    console.log("Visitor is not logged in. Showing public chapter content.");
+        console.log(
+            "Visitor is not logged in. Showing public chapter content."
+        );
 
-    for (let i = 1; i <= 6; i++) {
-        document.getElementById(`cbt${i}Attempts`).innerText =
-            "Attempts : —";
+        chapter.cbts.forEach((cbt, index) => {
+            const number = index + 1;
 
-        document.getElementById(`cbt${i}BestScore`).innerText =
-            "Best Score : —";
+            document.getElementById(`cbt${number}Attempts`).innerText =
+                "Attempts : —";
 
-        document.getElementById(`cbt${i}Percentage`).innerText =
-            "Best Percentage : —";
+            document.getElementById(`cbt${number}BestScore`).innerText =
+                "Best Score : —";
+
+            document.getElementById(`cbt${number}Percentage`).innerText =
+                "Best Percentage : —";
+        });
+
+        return;
     }
 
-    return;
+    try {
+        const snapshot = await getQuizResults(currentUser.uid);
+
+        const cbtStats = calculateCBTStats(snapshot, chapter.title);
+        const chapterStats = calculateChapterStats(snapshot, chapter.title);
+        console.log("Current chapter:", chapter.title);
+console.log("Calculated chapter statistics:", chapterStats);
+
+        
+        const totalSeconds = chapterStats.totalTime;
+
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        const timeText = hours > 0
+    ? `${hours}h ${minutes}m`
+    : minutes > 0
+        ? `${minutes} min`
+        : `${seconds} sec`;
+
+
+        document.getElementById("practiceSolved").innerText =
+            chapterStats.questionsSolved;
+
+        document.getElementById("bestScore").innerText =
+            chapterStats.bestScore;
+
+        document.getElementById("timeSpent").innerText = timeText;
+
+        document.getElementById("notesProgress").innerText = "0%";
+
+        console.log("CBT statistics:", cbtStats);
+
+        chapter.cbts.forEach((cbt, index) => {
+            const number = index + 1;
+            const key = `cbt${number}`;
+            const stats = cbtStats[key];
+
+            if (!stats) {
+                console.warn(`No statistics found for ${key}`);
+                return;
+            }
+
+            document.getElementById(`${key}Attempts`).innerText =
+                `Attempts : ${stats.attempts}`;
+
+            document.getElementById(`${key}BestScore`).innerText =
+                `Best Score : ${stats.bestScore}`;
+
+            document.getElementById(`${key}Percentage`).innerText =
+                `Best Percentage : ${stats.bestPercentage}%`;
+        });
+    } catch (error) {
+        console.error("Could not load chapter statistics:", error);
+    }
+});
+
+// Each CBT button records both the selected chapter and CBT.
+for (let i = 1; i <= 6; i++) {
+    const button = cbtButtons[`cbt${i}`];
+
+    if (!button) continue;
+
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const number = i;
+        const cbt = chapter?.cbts[number - 1];
+
+        if (!chapter || !cbt) {
+            console.error("This CBT is not configured for the chapter.");
+            return;
+        }
+
+        localStorage.setItem("currentChapter", chapter.id);
+        localStorage.setItem("currentCBT", cbt.id);
+
+        window.location.href = "quiz.html";
+    });
 }
-const snapshot = await getQuizResults(currentUser.uid);
-
-    const cbtStats = calculateCBTStats(snapshot);
-    const chapterStats = calculateChapterStats(snapshot);
-
-    const hours = Math.floor(chapterStats.totalTime / 3600);
-
-    const minutes = Math.floor(
-        (chapterStats.totalTime % 3600) / 60
-    );
-
-    let timeText = "";
-
-    if (hours > 0) {
-        timeText = `${hours}h ${minutes}m`;
-    } else {
-        timeText = `${minutes} min`;
-    }
-
-    document.getElementById("practiceSolved").innerText =
-        chapterStats.questionsSolved;
-
-    document.getElementById("bestScore").innerText =
-        chapterStats.bestScore;
-
-    document.getElementById("timeSpent").innerText =
-        timeText;
-
-    document.getElementById("notesProgress").innerText = "0%";
-
-    console.log(cbtStats);
-
-    document.getElementById("cbt1Attempts").innerText =
-        `Attempts : ${cbtStats.cbt1.attempts}`;
-
-    document.getElementById("cbt1BestScore").innerText =
-        `Best Score : ${cbtStats.cbt1.bestScore}`;
-
-    document.getElementById("cbt1Percentage").innerText =
-        `Best Percentage : ${cbtStats.cbt1.bestPercentage}%`;
-
-    document.getElementById("cbt2Attempts").innerText =
-        `Attempts : ${cbtStats.cbt2.attempts}`;
-
-    document.getElementById("cbt2BestScore").innerText =
-        `Best Score : ${cbtStats.cbt2.bestScore}`;
-
-    document.getElementById("cbt2Percentage").innerText =
-        `Best Percentage : ${cbtStats.cbt2.bestPercentage}%`;
-
-    document.getElementById("cbt3Attempts").innerText =
-        `Attempts : ${cbtStats.cbt3.attempts}`;
-
-    document.getElementById("cbt3BestScore").innerText =
-        `Best Score : ${cbtStats.cbt3.bestScore}`;
-
-    document.getElementById("cbt3Percentage").innerText =
-        `Best Percentage : ${cbtStats.cbt3.bestPercentage}%`;
-
-    document.getElementById("cbt4Attempts").innerText =
-        `Attempts : ${cbtStats.cbt4.attempts}`;
-
-    document.getElementById("cbt4BestScore").innerText =
-        `Best Score : ${cbtStats.cbt4.bestScore}`;
-
-    document.getElementById("cbt4Percentage").innerText =
-        `Best Percentage : ${cbtStats.cbt4.bestPercentage}%`;
-    document.getElementById("cbt5Attempts").innerText =
-    `Attempts : ${cbtStats.cbt5.attempts}`;
-
-document.getElementById("cbt5BestScore").innerText =
-    `Best Score : ${cbtStats.cbt5.bestScore}`;
-
-document.getElementById("cbt5Percentage").innerText =
-    `Best Percentage : ${cbtStats.cbt5.bestPercentage}%`;
-document.getElementById("cbt6Attempts").innerText =
-    `Attempts : ${cbtStats.cbt6.attempts}`;
-
-document.getElementById("cbt6BestScore").innerText =
-    `Best Score : ${cbtStats.cbt6.bestScore}`;
-
-document.getElementById("cbt6Percentage").innerText =
-    `Best Percentage : ${cbtStats.cbt6.bestPercentage}%`;
-});
-
-cbt1Button.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("currentCBT", "cbt1");
-    window.location.href = "quiz.html";
-});
-
-cbt2Button.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("currentCBT", "cbt2");
-    window.location.href = "quiz.html";
-});
-
-cbt3Button.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("currentCBT", "cbt3");
-    window.location.href = "quiz.html";
-});
-
-cbt4Button.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("currentCBT", "cbt4");
-    window.location.href = "quiz.html";
-
-});
-
-cbt5Button.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("currentCBT", "cbt5");
-    window.location.href = "quiz.html";
-});
-
-cbt6Button.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("currentCBT", "cbt6");
-    window.location.href = "quiz.html";
-});
