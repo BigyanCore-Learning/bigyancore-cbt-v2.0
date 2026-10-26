@@ -792,9 +792,12 @@ async function submitExam() {
     try {
         await saveQuizResult({
             subject: "Chemistry",
-            chapter: localStorage.getItem("currentChapter") === "classification-periodicity"
-    ? "Classification of Elements and Periodicity in Properties"
-    : "Atomic Structure",
+            chapter:
+    localStorage.getItem("currentChapter") === "classification-periodicity"
+        ? "Classification of Elements and Periodicity in Properties"
+        : localStorage.getItem("currentChapter") === "chemical-bonding"
+            ? "Chemical Bonding and Molecular Structure"
+            : "Atomic Structure",
             cbt: currentCBT,
             score: score,
             totalQuestions: questions.length,

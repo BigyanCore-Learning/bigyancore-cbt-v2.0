@@ -53,9 +53,10 @@ localStorage.getItem("latestResult")
 
 if (latestResult) {
     const chapterTitles = {
-        "atomic-structure": "Structure of Atom",
-        "classification-periodicity": "Classification of Elements and Periodicity in Properties"
-    };
+    "atomic-structure": "Structure of Atom",
+    "classification-periodicity": "Classification of Elements and Periodicity in Properties",
+    "chemical-bonding": "Chemical Bonding and Molecular Structure"
+};
 
     chapterNameElement.textContent =
         chapterTitles[latestResult.chapterId] || "Structure of Atom";
