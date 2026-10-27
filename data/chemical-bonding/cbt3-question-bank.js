@@ -98,22 +98,18 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   },
   {
-    id: 7,
-    type: "single",
-    difficulty: "moderate",
-    topic: "LCAO Conditions",
-    question: "পারমাণবিক কক্ষকের রৈখিক সংমিশ্রণের (LCAO) শর্ত নয় কোনটি?",
-    options: [
-      "সংমিশ্রিত কক্ষকগুলোর শক্তি সামঞ্জস্যপূর্ণ হতে হবে।",
-      "কক্ষকগুলোর overlapping সর্বাধিক হওয়া উচিত।",
-      "কক্ষকগুলোর symmetry মিল থাকতে হবে।",
-      "কক্ষকগুলোর আকার সমান হতে হবে।"
-    ],
-    correctAnswer: 3,
-    explanation: "কার্যকর LCAO-এর জন্য orbital energies কাছাকাছি, symmetry সামঞ্জস্যপূর্ণ এবং overlap যথেষ্ট হওয়া দরকার; আকার এক হওয়া বাধ্যতামূলক নয়।",
-    marks: 4,
-    negativeMarks: 1
-  },
+  id: 7, type: "single", difficulty: "moderate", topic: "LCAO Conditions",
+  question: "পারমাণবিক কক্ষকের রৈখিক সংমিশ্রণের (LCAO) জন্য কোনটি বাধ্যতামূলক শর্ত নয়?",
+  options: [
+    "সংমিশ্রিত কক্ষকগুলোর শক্তি কাছাকাছি হওয়া উচিত।",
+    "কক্ষকগুলোর symmetry সামঞ্জস্যপূর্ণ হওয়া উচিত।",
+    "কক্ষকগুলোর মধ্যে যথেষ্ট overlap থাকা উচিত।",
+    "কক্ষকগুলোর আকার অবশ্যই সমান হতে হবে।"
+  ],
+  correctAnswer: 3,
+  explanation: "কার্যকর LCAO-এর জন্য orbital energy কাছাকাছি হওয়া, symmetry সামঞ্জস্যপূর্ণ হওয়া এবং যথেষ্ট overlap থাকা গুরুত্বপূর্ণ। Orbital-এর আকার হুবহু সমান হওয়া বাধ্যতামূলক নয়।",
+  marks: 4, negativeMarks: 1
+},
   {
     id: 8,
     type: "single",
@@ -149,21 +145,17 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   },
   {
-    id: 10,
-    type: "single",
-    difficulty: "easy",
-    topic: "Antibonding Molecular Orbitals",
-    question: "Antibonding molecular orbital-এ electron probability density কোথায় শূন্য থাকে?",
-    options: [
-      "পরমাণুর কেন্দ্রে",
-      "দুটি নিউক্লিয়াসের মাঝের nodal plane-এ",
-      "পরমাণুর বাইরে",
-      "কোথাও নয়"
-    ],
-    correctAnswer: 1,
-    explanation: "Antibonding orbital-এর দুই নিউক্লিয়াসের মাঝখানে nodal plane থাকে, যেখানে wavefunction এবং electron probability density শূন্য।",
-    marks: 4,
-    negativeMarks: 1
+  id: 10, type: "single", difficulty: "easy", topic: "Antibonding Molecular Orbitals",
+  question: "দুটি 1s atomic orbital-এর সংমিশ্রণে গঠিত σ* antibonding molecular orbital-এ nodal plane কোথায় থাকে?",
+  options: [
+    "একটি নিউক্লিয়াসের বাইরের দিকে",
+    "দুটি নিউক্লিয়াসের মাঝখানে",
+    "দুটি নিউক্লিয়াসের বাইরের দিকে উভয় পাশে",
+    "কোনো nodal plane থাকে না"
+  ],
+  correctAnswer: 1,
+  explanation: "দুটি 1s orbital থেকে গঠিত σ* antibonding MO-তে নিউক্লিয়াস দুটির মাঝখানে nodal plane থাকে। সেখানে wavefunction এবং electron probability density শূন্য।",
+  marks: 4, negativeMarks: 1
   },
   {
     id: 11,
@@ -217,38 +209,30 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   },
   {
-    id: 14,
-    type: "single",
-    difficulty: "easy",
-    topic: "Molecular Orbital Electron Filling",
-    question: "Molecular orbital-এ electron filling-এর ক্ষেত্রে কোন নীতিটি সরাসরি অনুসরণ করা হয় না?",
-    options: [
-      "Aufbau principle",
-      "Hund's rule",
-      "Pauli exclusion principle",
-      "Heisenberg uncertainty principle"
-    ],
-    correctAnswer: 3,
-    explanation: "MO electron configuration-এ Aufbau principle, Pauli exclusion principle এবং Hund's rule প্রয়োগ করা হয়।",
-    marks: 4,
-    negativeMarks: 1
+  id: 14, type: "single", difficulty: "easy", topic: "Molecular Orbital Electron Filling",
+  question: "Molecular orbital-এর electron configuration নির্ধারণে Aufbau principle, Pauli exclusion principle এবং Hund's rule ব্যবহৃত হয়। নিচের কোনটি এই তিনটি electron-filling rule-এর অন্তর্ভুক্ত নয়?",
+  options: [
+    "Aufbau principle",
+    "Hund's rule",
+    "Pauli exclusion principle",
+    "Heisenberg uncertainty principle"
+  ],
+  correctAnswer: 3,
+  explanation: "MO electron configuration নির্ধারণে Aufbau principle, Pauli exclusion principle এবং Hund's rule প্রয়োগ করা হয়। Heisenberg uncertainty principle গুরুত্বপূর্ণ একটি মৌলিক নীতি, কিন্তু এটি এই তিনটি electron-filling rule-এর একটি নয়।",
+  marks: 4, negativeMarks: 1
   },
   {
-    id: 15,
-    type: "multiple",
-    difficulty: "moderate",
-    topic: "LCAO Conditions",
-    question: "LCAO পদ্ধতিতে কার্যকর molecular orbital গঠনের শর্তগুলো নির্বাচন করো।",
-    options: [
-      "সংমিশ্রিত orbital-এর শক্তি অবশ্যই সমান হতে হবে",
-      "orbital-গুলোর overlap যথেষ্ট/সর্বাধিক হতে হবে",
-      "orbital-গুলোর symmetry সামঞ্জস্যপূর্ণ হতে হবে",
-      "orbital-গুলোর আকার সমান হতে হবে"
-    ],
-    correctAnswer: [1, 2],
-    explanation: "কার্যকর LCAO-এর জন্য শক্তি কাছাকাছি হওয়া, যথেষ্ট overlap এবং symmetry সামঞ্জস্যপূর্ণ হওয়া গুরুত্বপূর্ণ। শক্তি হুবহু সমান বা আকার সমান হওয়া বাধ্যতামূলক নয়।",
-    marks: 4,
-    negativeMarks: 1
+  id: 15, type: "multiple", difficulty: "moderate", topic: "LCAO Conditions",
+  question: "LCAO পদ্ধতিতে কার্যকর molecular orbital গঠনের শর্তগুলো নির্বাচন করো।",
+  options: [
+    "সংমিশ্রিত orbital-এর শক্তি অবশ্যই হুবহু সমান হতে হবে",
+    "orbital-গুলোর মধ্যে কার্যকর interaction-এর জন্য যথেষ্ট overlap থাকতে হবে",
+    "orbital-গুলোর symmetry সামঞ্জস্যপূর্ণ হতে হবে",
+    "orbital-গুলোর আকার অবশ্যই সমান হতে হবে"
+  ],
+  correctAnswer: [1, 2],
+  explanation: "কার্যকর LCAO-এর জন্য orbital-এর শক্তি কাছাকাছি, overlap যথেষ্ট এবং symmetry সামঞ্জস্যপূর্ণ হওয়া গুরুত্বপূর্ণ। শক্তি হুবহু সমান বা আকার সমান হওয়া বাধ্যতামূলক নয়।",
+  marks: 4, negativeMarks: 1
   },
   {
     id: 16,
@@ -297,21 +281,17 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   },
   {
-    id: 19,
-    type: "multiple",
-    difficulty: "moderate",
-    topic: "Bond Order",
-    question: "Bond order সম্পর্কে সঠিক বক্তব্যগুলো নির্বাচন করো।",
-    options: [
-      "bond order বাড়লে সাধারণত bond length কমে",
-      "bond order শূন্য হলে সাধারণত স্থিতিশীল bond থাকে না",
-      "bond order ভগ্নাংশ হতে পারে",
-      "bond order ঋণাত্মক হতে পারে"
-    ],
-    correctAnswer: [0, 1, 2],
-    explanation: "Bond order বাড়লে bond strength সাধারণত বাড়ে এবং bond length কমে। Bond order ভগ্নাংশ হতে পারে; ঋণাত্মক bond order-কে সাধারণত স্থিতিশীল bond হিসেবে ধরা হয় না।",
-    marks: 4,
-    negativeMarks: 1
+  id: 19, type: "multiple", difficulty: "moderate", topic: "Bond Order",
+  question: "Bond order সম্পর্কে সঠিক বক্তব্যগুলো নির্বাচন করো।",
+  options: [
+    "bond order বাড়লে সাধারণত bond length কমে",
+    "bond order শূন্য হলে সাধারণত স্থিতিশীল net bond থাকে না",
+    "bond order ভগ্নাংশ হতে পারে",
+    "ঋণাত্মক bond order একটি স্থিতিশীল অণু নির্দেশ করে"
+  ],
+  correctAnswer: [0, 1, 2],
+  explanation: "Bond order বাড়লে সাধারণত bond strength বাড়ে এবং bond length কমে। Bond order ভগ্নাংশ হতে পারে। সরল MO মডেলে bond order শূন্য হলে net bond থাকে না; ঋণাত্মক bond order স্থিতিশীল বন্ধন নির্দেশ করে না।",
+  marks: 4, negativeMarks: 1
   },
   {
     id: 20,
