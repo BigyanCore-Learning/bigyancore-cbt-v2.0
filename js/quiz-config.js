@@ -145,6 +145,23 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
+        "chemical-bonding-cbt4": {
+        title: "Chemical Bonding and Molecular Structure - CBT 4",
+        subtitle: "Class XI Chemistry | Advanced Practice Test - CBT 4",
+        duration: 60,
+        totalQuestions: 50,
+        fullMarks: 200,
+        instructions: [
+            "মোট প্রশ্ন: 50 টি (Total Questions: 50)",
+            "পূর্ণমান: 200 (Full Marks: 200)",
+            "সময়: 60 মিনিট (Duration: 60 minutes)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "সঠিক উত্তরে +4, ভুল উত্তরে -1 এবং উত্তর না দিলে 0 নম্বর।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
+        ]
+    },
 
     "classification-periodicity-cbt1": {
         title: "Classification of Elements and Periodicity in Properties - CBT 1",

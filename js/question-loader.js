@@ -91,6 +91,11 @@ export async function loadQuestions() {
                 await import("../data/chemical-bonding/cbt3-question-bank.js")
             ).default;
 
+        } else if (currentCBT === "cbt4") {
+            questions = (
+                await import("../data/chemical-bonding/cbt4-question-bank.js")
+            ).default;
+
         } else {
             throw new Error(
                 `CBT "${currentCBT}" is not configured for ${currentChapter}.`

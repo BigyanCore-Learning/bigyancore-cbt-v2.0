@@ -150,9 +150,15 @@ cbts: [
         questions: 35,
         duration: 45,
         buttonText: "Start CBT 3"
+    },
+    {
+        id: "cbt4",
+        title: "CBT 4",
+        questions: 50,
+        duration: 60,
+        buttonText: "Start CBT 4"
     }
 ]
-
 }
 
 ];
