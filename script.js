@@ -520,21 +520,8 @@ document
 saveAnswer();
 
 
-if(currentQuestion <
-questions.length-1){
-
-
-    questionTimeSpent[currentQuestion]
-    +=
-    Math.floor(
-    (Date.now()-questionStartTime[currentQuestion])
-    /1000
-    );
-
-
-    showQuestion(currentQuestion+1);
-
-
+if (currentQuestion < questions.length - 1) {
+    showQuestion(currentQuestion + 1);
 }
 
 
@@ -819,7 +806,7 @@ async function submitExam() {
         ? "Classification of Elements and Periodicity in Properties"
         : localStorage.getItem("currentChapter") === "chemical-bonding"
             ? "Chemical Bonding and Molecular Structure"
-            : ": Structure of Atom",
+            : "Structure of Atom",
             cbt: currentCBT,
             score: score,
             totalQuestions: questions.length,
