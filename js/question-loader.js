@@ -8,38 +8,36 @@ export async function loadQuestions() {
     const currentCBT =
         localStorage.getItem("currentCBT") || "cbt1";
 
-    
     // Classification of Elements and Periodicity in Properties
-    
-if (currentChapter === "classification-periodicity") {
-    if (currentCBT === "cbt1") {
-        questions = (
-            await import("../data/classification-periodicity/cbt1-question-bank.js")
-        ).default;
-    } else if (currentCBT === "cbt2") {
-        questions = (
-            await import("../data/classification-periodicity/cbt2-question-bank.js")
-        ).default;
-    } else if (currentCBT === "cbt3") {
-        questions = (
-            await import("../data/classification-periodicity/cbt3-question-bank.js")
-        ).default;
-    } else if (currentCBT === "cbt4") {
-        questions = (
-            await import("../data/classification-periodicity/cbt4-question-bank.js")
-        ).default;
-    } else {
-        throw new Error(
-            `CBT "${currentCBT}" is not configured for ${currentChapter}.`
-        );
-    }
-}
+    if (currentChapter === "classification-periodicity") {
+        if (currentCBT === "cbt1") {
+            questions = (
+                await import("../data/classification-periodicity/cbt1-question-bank.js")
+            ).default;
 
+        } else if (currentCBT === "cbt2") {
+            questions = (
+                await import("../data/classification-periodicity/cbt2-question-bank.js")
+            ).default;
 
+        } else if (currentCBT === "cbt3") {
+            questions = (
+                await import("../data/classification-periodicity/cbt3-question-bank.js")
+            ).default;
 
-    // Existing Atomic Structure question banks
-     else if (currentChapter === "atomic-structure") {
+        } else if (currentCBT === "cbt4") {
+            questions = (
+                await import("../data/classification-periodicity/cbt4-question-bank.js")
+            ).default;
 
+        } else {
+            throw new Error(
+                `CBT "${currentCBT}" is not configured for ${currentChapter}.`
+            );
+        }
+
+    // Atomic Structure
+    } else if (currentChapter === "atomic-structure") {
         if (currentCBT === "cbt1") {
             questions = (
                 await import("../data/atomic-structure/question-bank.js")
@@ -71,15 +69,26 @@ if (currentChapter === "classification-periodicity") {
             ).default;
 
         } else {
-            throw new Error(`Unknown Atomic Structure CBT: ${currentCBT}`);
+            throw new Error(
+                `Unknown Atomic Structure CBT: ${currentCBT}`
+            );
         }
 
-    
+    // Chemical Bonding and Molecular Structure
     } else if (currentChapter === "chemical-bonding") {
-
         if (currentCBT === "cbt1") {
             questions = (
                 await import("../data/chemical-bonding/cbt1-question-bank.js")
+            ).default;
+
+        } else if (currentCBT === "cbt2") {
+            questions = (
+                await import("../data/chemical-bonding/cbt2-question-bank.js")
+            ).default;
+
+        } else if (currentCBT === "cbt3") {
+            questions = (
+                await import("../data/chemical-bonding/cbt3-question-bank.js")
             ).default;
 
         } else {
@@ -91,7 +100,6 @@ if (currentChapter === "classification-periodicity") {
     } else {
         throw new Error(`Unknown chapter: ${currentChapter}`);
     }
-
 
     console.log("Current Chapter:", currentChapter);
     console.log("Current CBT:", currentCBT);

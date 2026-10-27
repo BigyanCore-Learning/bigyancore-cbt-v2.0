@@ -1,12 +1,49 @@
 import { quizConfig } from "./js/quiz-config.js";
 import { loadQuestions } from "./js/question-loader.js";
 import { saveQuizResult } from "./firebase/results.js";
+import { auth } from "./firebase/firebase-config.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 let questions = [];
+
+function checkStudentLogin() {
+    return new Promise((resolve) => {
+        let unsubscribe = null;
+        let resolved = false;
+
+        unsubscribe = onAuthStateChanged(auth, (user) => {
+
+            if (resolved) return;
+            resolved = true;
+
+            if (unsubscribe) {
+                unsubscribe();
+            }
+        
+            if (!user) {
+                alert("Please sign in with Google before starting a test.");
+                window.location.href = "login.html";
+                resolve(false);
+                return;
+            }
+
+            resolve(true);
+        });
+    });    
+}
+
+
+const isLoggedIn = await checkStudentLogin();
+
+if (!isLoggedIn) {
+    throw new Error("Test access requires Google sign-in.");
+}
+
 async function initializeQuiz() {
-
     questions = await loadQuestions();
-
 }
 
 await initializeQuiz();
@@ -19,9 +56,9 @@ const currentCBT =
     localStorage.getItem("currentCBT") || "cbt1";
 
 const configKey =
-    currentChapter === "chemical-bonding"
-        ? `${currentChapter}-${currentCBT}`
-        : currentCBT;
+    currentChapter === "atomic-structure"
+        ? currentCBT
+        : `${currentChapter}-${currentCBT}`;
 
 const config = quizConfig[configKey];
 
@@ -440,22 +477,10 @@ selected.forEach(item=>{
 answers.push(item.value);
 
 });
-
-
-
 userAnswers[currentQuestion]=answers;
-
-
-
 updatePalette();
 
-
-
 }
-
-
-
-
 
 document
 .getElementById("optionsContainer")
@@ -467,9 +492,6 @@ saveAnswer
 // -------------------------
 // Hint Button
 // -------------------------
-
-
-
 document.getElementById("hintBtn").onclick = function () {
     const box = document.getElementById("hintBox");
     const q = questions[currentQuestion];
@@ -719,7 +741,7 @@ async function submitExam() {
 
     let score = 0;
 
-    // JEE/NEET-style marking: +F correct, -1 incorrect, 0 unanswered
+    // JEE/NEET-style marking: +4 correct, -1 incorrect, 0 unanswered
     questions.forEach((q, i) => {
         let correct;
 
@@ -797,7 +819,7 @@ async function submitExam() {
         ? "Classification of Elements and Periodicity in Properties"
         : localStorage.getItem("currentChapter") === "chemical-bonding"
             ? "Chemical Bonding and Molecular Structure"
-            : "Atomic Structure",
+            : ": Structure of Atom",
             cbt: currentCBT,
             score: score,
             totalQuestions: questions.length,

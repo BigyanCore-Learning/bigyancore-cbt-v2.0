@@ -96,6 +96,8 @@ export const quizConfig = {
         ]
         },
 
+    
+   
     "chemical-bonding-cbt1": {
         title: "Chemical Bonding and Molecular Structure - CBT 1",
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
@@ -109,6 +111,104 @@ export const quizConfig = {
             "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
+    },
+
+    "chemical-bonding-cbt2": {
+        title: "Chemical Bonding and Molecular Structure - CBT 2",
+        subtitle: "Class XI Chemistry | Advanced Practice Test",
+        duration: 45,
+        totalQuestions: 35,
+        fullMarks: 140,
+        instructions: [
+            "মোট প্রশ্ন: 35 টি (Total Questions: 35)",
+            "পূর্ণমান: 140 (Full Marks: 140)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
+        ]
+    },
+
+    
+    "chemical-bonding-cbt3": {
+        title: "Chemical Bonding and Molecular Structure - CBT 3",
+        subtitle: "Class XI Chemistry | Advanced Practice Test",
+        duration: 45,
+        totalQuestions: 35,
+        fullMarks: 140,
+        instructions: [
+            "মোট প্রশ্ন: 35 টি (Total Questions: 35)",
+            "পূর্ণমান: 140 (Full Marks: 140)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
+        ]
+    },
+
+    "classification-periodicity-cbt1": {
+        title: "Classification of Elements and Periodicity in Properties - CBT 1",
+        subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
+        duration: 35,
+        totalQuestions: 25,
+        fullMarks: 100,
+        instructions: [
+            "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
+            "পূর্ণমান: 100 (Full Marks: 100)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
+        ]
+    },
+
+    "classification-periodicity-cbt2": {
+        title: "Classification of Elements and Periodicity in Properties - CBT 2",
+        subtitle: "Class XI Chemistry | Advanced Practice Test",
+        duration: 35,
+        totalQuestions: 25,
+        fullMarks: 100,
+        instructions: [
+            "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
+            "পূর্ণমান: 100 (Full Marks: 100)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না."
+        ]
+    },
+
+    "classification-periodicity-cbt3": {
+        title: "Classification of Elements and Periodicity in Properties - CBT 3",
+        subtitle: "Class XI Chemistry | Advanced Practice Test",
+        duration: 35,
+        totalQuestions: 25,
+        fullMarks: 100,
+        instructions: [
+            "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
+            "পূর্ণমান: 100 (Full Marks: 100)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
+        ]
+    },
+
+    "classification-periodicity-cbt4": {
+        title: "Classification of Elements and Periodicity in Properties - CBT 4",
+        subtitle: "Class XI Chemistry | Advanced Practice Test",
+        duration: 35,
+        totalQuestions: 25,
+        fullMarks: 100,
+        instructions: [
+            "মোট প্রশ্ন: 25 টি (Total Questions: 25)",
+            "পূর্ণমান: 100 (Full Marks: 100)",
+            "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
+            "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
+            "কিছু প্রশ্ন Multiple Correct হতে পারে।",
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না."
+        ]
     }
 
 };
+

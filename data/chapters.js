@@ -128,15 +128,31 @@ export const chapters = [
 
     pyq: false,
 
-    cbts: [
-        {
-            id: "cbt1",
-            title: "CBT 1",
-            questions: 25,
-            duration: 35,
-            buttonText: "Start CBT 1"
-        }
-    ]
+   
+cbts: [
+    {
+        id: "cbt1",
+        title: "CBT 1",
+        questions: 25,
+        duration: 35,
+        buttonText: "Start CBT 1"
+    },
+    {
+        id: "cbt2",
+        title: "CBT 2",
+        questions: 35,
+        duration: 45,
+        buttonText: "Start CBT 2"
+    },
+    {
+        id: "cbt3",
+        title: "CBT 3",
+        questions: 35,
+        duration: 45,
+        buttonText: "Start CBT 3"
+    }
+]
+
 }
 
 ];
