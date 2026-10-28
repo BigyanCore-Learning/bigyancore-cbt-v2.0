@@ -3,7 +3,6 @@
 // Single-answer correctAnswer: zero-based index (0–3)
 // Multiple-answer correctAnswer: array of zero-based indexes
 // Marking: +4 correct, -1 incorrect
-
 const CBT2_QUESTION_BANK = [
   {
     id: 1,
@@ -521,5 +520,4 @@ const CBT2_QUESTION_BANK = [
     negativeMarks: 1
   }
 ];
-
 export default CBT2_QUESTION_BANK;

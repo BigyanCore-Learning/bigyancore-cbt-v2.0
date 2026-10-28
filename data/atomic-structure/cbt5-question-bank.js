@@ -1,7 +1,6 @@
 // Atomic Structure — CBT5 Question Bank
 // Single-answer questions use a zero-based correctAnswer.
 // Multiple-answer questions use an array of zero-based answer indexes.
-
 export const questions = [
   {
     id: 1,
@@ -401,5 +400,4 @@ export const questions = [
     negativeMarks: 1
   }
 ];
-
 export default questions;

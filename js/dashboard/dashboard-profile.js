@@ -1,68 +1,47 @@
 export function setGreeting() {
+    const greetingElement = document.getElementById("greetingText");
+    if (!greetingElement) return;
 
     const hour = new Date().getHours();
-
     let greeting = "";
-
+    
     if (hour < 12) {
-
         greeting = "Good Morning ☀️";
-
     } else if (hour < 17) {
-
         greeting = "Good Afternoon 🌤";
-
     } else {
-
         greeting = "Good Evening 🌙";
-
     }
-
-    document.getElementById("greetingText").innerText =
-        greeting;
-
+    
+    greetingElement.innerText = greeting;
 }
 
 export function setProfile(user) {
+    if (!user) return;
 
-    document.getElementById("user-name").innerText =
-        user.displayName;
+    const nameElement = document.getElementById("user-name");
+    const emailElement = document.getElementById("user-email");
 
-    document.getElementById("user-email").innerText =
-        user.email;
-
+    if (nameElement) nameElement.innerText = user.displayName || "";
+    if (emailElement) emailElement.innerText = user.email || "";
 }
 
 export function loadProfilePhoto(photoURL) {
+    const img = document.getElementById("user-photo");
+    if (!img) return;
 
-    const img =
-        document.getElementById("user-photo");
+    const defaultPhoto = "images/default-user.png";
 
     if (!photoURL) {
-
-        img.src = "images/default-user.png";
-
+        img.src = defaultPhoto;
         return;
-
     }
 
-    const tester = new Image();
-
-    tester.onload = () => {
-
-        img.src =
-            photoURL + "?v=" + Date.now();
-
+    // Handle image load failures directly on the DOM element
+    img.onerror = () => {
+        img.src = defaultPhoto;
     };
 
-    tester.onerror = () => {
-
-        img.src =
-            "images/default-user.png";
-
-    };
-
-    tester.src =
-        photoURL + "?v=" + Date.now();
-
+    // Append timestamp cache-buster safely
+    img.src = photoURL + "?v=" + Date.now();
 }

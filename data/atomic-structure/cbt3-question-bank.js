@@ -1,4 +1,3 @@
-
 const CBT3_QUESTION_BANK = [
   {
     id: 1,
@@ -344,7 +343,6 @@ const CBT3_QUESTION_BANK = [
   marks: 4,
   negativeMarks: 1
   },
-  
   {
     id: 24,
     type: "single",
@@ -380,5 +378,4 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   }
 ];
-
 export default CBT3_QUESTION_BANK;

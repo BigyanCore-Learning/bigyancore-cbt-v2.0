@@ -1,7 +1,6 @@
 // Atomic Structure — CBT6 Question Bank
 // 58 questions: 32 normalized from the uploaded Bengali quiz + 26 additional questions.
 // Single-answer correctAnswer is a zero-based index; multiple-answer correctAnswer is an array of zero-based indexes.
-
 export const questions = [
   {
     "id": 1,
@@ -809,5 +808,4 @@ export const questions = [
     negativeMarks: 1
   }
 ];
-
 export default questions;

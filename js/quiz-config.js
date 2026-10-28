@@ -1,4 +1,3 @@
-
 export const quizConfig = {
     cbt1: {
         title: "পরমাণুর গঠন (Atomic Structure) - CBT 1",
@@ -15,7 +14,6 @@ export const quizConfig = {
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
     },
-
     cbt2: {
         title: "পরমাণুর গঠন (Atomic Structure) - CBT 2",
         subtitle: "Advanced Practice Test",
@@ -31,7 +29,6 @@ export const quizConfig = {
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
     },
-
     cbt3: {
         title: "পরমাণুর গঠন (Atomic Structure) - CBT 3",
         subtitle: "Advanced Practice Test - CBT 3",
@@ -62,7 +59,6 @@ export const quizConfig = {
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
     },
-    
     cbt5: {
         title: "পরমাণুর গঠন (Atomic Structure) - CBT 5",
         subtitle: "WBCHSE + NCERT + JEE/NEET Foundation Test - CBT 5",
@@ -78,7 +74,6 @@ export const quizConfig = {
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
     },
-    
     cbt6: {
         title: "পরমাণুর গঠন (Atomic Structure) - CBT 6",
         subtitle: "WBCHSE + NCERT + JEE/NEET Foundation Test - CBT 6",
@@ -95,9 +90,6 @@ export const quizConfig = {
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
         },
-
-    
-   
     "chemical-bonding-cbt1": {
         title: "Chemical Bonding and Molecular Structure - CBT 1",
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
@@ -112,7 +104,6 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
-
     "chemical-bonding-cbt2": {
         title: "Chemical Bonding and Molecular Structure - CBT 2",
         subtitle: "Class XI Chemistry | Advanced Practice Test",
@@ -128,8 +119,6 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
-
-    
     "chemical-bonding-cbt3": {
         title: "Chemical Bonding and Molecular Structure - CBT 3",
         subtitle: "Class XI Chemistry | Advanced Practice Test",
@@ -145,7 +134,7 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
-        "chemical-bonding-cbt4": {
+    "chemical-bonding-cbt4": {
         title: "Chemical Bonding and Molecular Structure - CBT 4",
         subtitle: "Class XI Chemistry | Advanced Practice Test - CBT 4",
         duration: 60,
@@ -162,7 +151,6 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
-
     "classification-periodicity-cbt1": {
         title: "Classification of Elements and Periodicity in Properties - CBT 1",
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
@@ -178,7 +166,6 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
-
     "classification-periodicity-cbt2": {
         title: "Classification of Elements and Periodicity in Properties - CBT 2",
         subtitle: "Class XI Chemistry | Advanced Practice Test",
@@ -194,7 +181,6 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না."
         ]
     },
-
     "classification-periodicity-cbt3": {
         title: "Classification of Elements and Periodicity in Properties - CBT 3",
         subtitle: "Class XI Chemistry | Advanced Practice Test",
@@ -210,7 +196,6 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
-
     "classification-periodicity-cbt4": {
         title: "Classification of Elements and Periodicity in Properties - CBT 4",
         subtitle: "Class XI Chemistry | Advanced Practice Test",
@@ -226,6 +211,4 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না."
         ]
     }
-
 };
-

@@ -765,5 +765,4 @@ const CBT4_QUESTION_BANK = [
     negativeMarks: 1
   }
 ];
-
 export default CBT4_QUESTION_BANK;

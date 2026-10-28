@@ -1,47 +1,29 @@
 /* ==========================================
    BUTTONS
 ========================================== */
-
-.btn{
-
-    display:inline-block;
-
-    padding:12px 24px;
-
-    border-radius:12px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.25s;
-
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
-.btn-primary{
-
-    background:var(--primary);
-
-    color:white;
-
+.btn-primary {
+    background: var(--primary);
+    color: white;
 }
 
-.btn-primary:hover{
-
-    background:var(--primary-dark);
-
+.btn-primary:hover {
+    background: var(--primary-dark);
 }
 
-.btn-success{
-
-    background:var(--secondary);
-
-    color:white;
-
+.btn-success {
+    background: var(--secondary);
+    color: white;
 }
 
-.btn-success:hover{
-
-    background:var(--secondary-dark);
-
+.btn-success:hover {
+    background: var(--secondary-dark);
 }

@@ -1,319 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
-
 <title>Dashboard | BigyanCore Learning</title>
-
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/cards.css">
 <link rel="stylesheet" href="css/buttons.css">
 <link rel="stylesheet" href="css/dashboard.css">
-
 </head>
-
 <body>
-
 <!-- ==========================
 HEADER
 =========================== -->
-
 <header class="dashboard-header">
-
 <div class="container">
-
-<div class="dashboard-logo">
-
-<img
-src="images/logo.png"
+<div class="dashboard-logo"><imgsrc="images/logo.png"
 alt="BigyanCore">
-
-<div>
-
-<h2>BIGYANCORE LEARNING</h2>
-
-<p>Learn Science the Smart Way.</p>
-
+<div><h2>BIGYANCORE LEARNING</h2><p>Learn Science the Smart Way.</p></div>
 </div>
-
-</div>
-
 <nav class="dashboard-nav">
-
 <a href="dashboard.html">Dashboard</a>
-
 <a href="chemistry.html">Chemistry</a>
-
-<a href="#">Profile</a>
-
-</nav>
-
+<a href="#">Profile</a></nav>
 </div>
-
 </header>
-
 <!-- ==========================
 MAIN
 =========================== -->
-
 <main class="dashboard-page">
-
 <div class="container">
-
 <!-- Welcome -->
-
 <section class="welcome-banner">
-
-<div class="user-profile">
-
-<img
-id="user-photo"
-src="images/default-user.png"
-alt="Profile">
-
+<div class="user-profile"><imgid="user-photo" src="images/default-user.png"alt="Profile">
 <div>
-
-<p id="greetingText">
-
-Good Morning 👋
-
-</p>
-
-<h1 id="user-name">
-
-Loading...
-
-</h1>
-
-<p id="user-email">
-
-Loading...
-
-</p>
-
+<p id="greetingText">Good Morning 👋</p>
+<h1 id="user-name">Loading...</h1>
+<p id="user-email">Loading...</p>
 </div>
-
 </div>
-
-<button
-
-id="logout-btn"
-
-class="btn btn-primary">
-
-Logout
-
-</button>
-
+<button id="logout-btn"class="btn btn-primary">Logout</button>
 </section>
-
 <!-- Statistics -->
-
 <section class="stats-grid">
-
 <div class="card stat-card">
-
 <div class="stat-icon">📘</div>
-
 <h3>Chapters</h3>
-
 <h2 id="chaptersCompleted">0</h2>
-
 <p>Completed</p>
-
 </div>
-
 <div class="card stat-card">
-
 <div class="stat-icon">📝</div>
-
 <h3>Tests</h3>
-
 <h2 id="testsAttempted">0</h2>
-
 <p>Attempted</p>
-
 </div>
-
 <div class="card stat-card">
-
 <div class="stat-icon">⭐</div>
-
 <h3>Average</h3>
-
 <h2 id="averageScore">0%</h2>
-
 <p>Performance</p>
-
 </div>
-
 <div class="card stat-card">
-
 <div class="stat-icon">🏆</div>
-
 <h3>Best</h3>
-
 <h2 id="bestScore">0%</h2>
-
 <p>Score</p>
-
 </div>
-
 </section>
-
 <!-- Continue -->
-
 <section class="card continue-card">
-
 <div class="continue-left">
-
-<p class="continue-label">
-
-Continue Learning
-
-</p>
-
-<h2 id="continueChapter">
-
---
-
-</h2>
-
+<p class="continue-label">Continue Learning</p>
+<h2 id="continueChapter">--</h2>
 <p class="continue-meta">
-
-<span id="continueCBT">
-
---
-
-</span>
-
+<span id="continueCBT">--</span>
 •
-
 Last Score
-
-<span id="continuePercentage">
-
---
-
-</span>
-
+<span id="continuePercentage">--</span>
 </p>
-
 </div>
-
 <div class="continue-right">
-
-<button
-id="continueBtn"
-class="btn btn-success">
-
-Continue →
-
-</button>
-
+<button id="continueBtn" class="btn btn-success"> Continue → </button>
 </div>
-
 </section>
-
 <br>
-
 <!-- Performance -->
-
 <section class="grid grid-3">
-
 <div class="card">
-
-<h3>
-
-Questions Solved
-
-</h3>
-
-<h2 id="questionsSolved">
-
-0
-
-</h2>
-
+<h3>Questions Solved</h3>
+<h2 id="questionsSolved"> 0 </h2>
 </div>
-
 <div class="card">
-
-<h3>
-
-Study Time
-
-</h3>
-
-<h2 id="studyTime">
-
-0 min
-
-</h2>
-
+<h3> Study Time </h3>
+<h2 id="studyTime"> 0 min </h2>
 </div>
-
 <div class="card">
-
-<h3>
-
-Best Chapter
-
-</h3>
-
-<h2 id="bestChapter">
-
---
-
-</h2>
-
+<h3> Best Chapter </h3>
+<h2 id="bestChapter"> -- </h2>
 </div>
-
 </section>
-
 <br>
-
 <!-- Activity -->
-
 <section class="card">
-
-<h2>
-
-Recent Activity
-
-</h2>
-
+<h2> Recent Activity </h2>
 <br>
-
-<div id="recentActivity">
-
-</div>
-
+<div id="recentActivity"> </div>
 </section>
-
 </div>
-
 </main>
-
 <footer>
-
-<p>
-
-© 2026 BigyanCore Learning
-
-</p>
-
+<p> © 2026 BigyanCore Learning </p>
 </footer>
-
-<script type="module"
-src="js/dashboard/dashboard.js"></script>
-
+<script type="module" src="js/dashboard/dashboard.js"></script>
 </body>
-
 </html>

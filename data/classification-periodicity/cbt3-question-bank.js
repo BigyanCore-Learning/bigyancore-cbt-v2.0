@@ -1,4 +1,3 @@
-
 const questions = [
   {
     id: "cbt3-q1",
@@ -381,5 +380,4 @@ const questions = [
     negativeMarks: 1
   }
 ];
-
 export default questions;

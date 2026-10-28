@@ -1,79 +1,54 @@
 import { auth } from "../firebase/firebase-config.js";
-
 import {
 onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-
 const studentName =
 document.getElementById("student-name");
-
 const studentEmail =
 document.getElementById("student-email");
-
 const resultPhoto =
 document.getElementById("result-photo");
-
 const scoreElement =
 document.getElementById("score");
-
 const percentageElement =
 document.getElementById("percentage");
-
 const gradeElement =
 document.getElementById("grade");
-
 const chapterNameElement =
 document.getElementById("chapter-name");
 onAuthStateChanged(auth,(user)=>{
-
 if(!user){
-
 window.location.href="login.html";
-
 return;
-
 }
-
 studentName.textContent = user.displayName || "Student";
 studentEmail.textContent = user.email || "";
-
 if(user.photoURL){
-
 resultPhoto.src =
 user.photoURL;
-
 }
-
 });
-
 const latestResult =
 JSON.parse(
 localStorage.getItem("latestResult")
 );
-
 if (latestResult) {
     const chapterTitles = {
     "atomic-structure": "Structure of Atom",
     "classification-periodicity": "Classification of Elements and Periodicity in Properties",
     "chemical-bonding": "Chemical Bonding and Molecular Structure"
 };
-
     chapterNameElement.textContent =
         chapterTitles[latestResult.chapterId] || "Structure of Atom";
 }
-
-
 if (latestResult) {
     const totalMarks =
         latestResult.totalMarks ??
         (latestResult.totalQuestions * 4);
-
     scoreElement.textContent =
         `${latestResult.score} / ${totalMarks}`;
-
     percentageElement.textContent =
         `${latestResult.percentage}%`;
-
     if (latestResult.percentage >= 90) {
         gradeElement.textContent = "Excellent";
     } else if (latestResult.percentage >= 75) {

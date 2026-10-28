@@ -1,4 +1,3 @@
-
 const CBT3_QUESTION_BANK = [
   {
     id: 1,
@@ -109,7 +108,7 @@ const CBT3_QUESTION_BANK = [
   correctAnswer: 3,
   explanation: "কার্যকর LCAO-এর জন্য orbital energy কাছাকাছি হওয়া, symmetry সামঞ্জস্যপূর্ণ হওয়া এবং যথেষ্ট overlap থাকা গুরুত্বপূর্ণ। Orbital-এর আকার হুবহু সমান হওয়া বাধ্যতামূলক নয়।",
   marks: 4, negativeMarks: 1
-},
+  },
   {
     id: 8,
     type: "single",
@@ -506,5 +505,4 @@ const CBT3_QUESTION_BANK = [
     negativeMarks: 1
   }
 ];
-
 export default CBT3_QUESTION_BANK;

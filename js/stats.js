@@ -1,11 +1,8 @@
-
 import { db } from "../firebase/firebase-config.js";
-
 import {
     collection,
     getDocs
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
 export function calculateCBTStats(snapshot, chapterName) {
     const cbtStats = {
         cbt1: {
@@ -16,7 +13,6 @@ export function calculateCBTStats(snapshot, chapterName) {
             latestAttempt: null,
             totalTime: 0
         },
-
         cbt2: {
             attempts: 0,
             bestScore: 0,
@@ -25,7 +21,6 @@ export function calculateCBTStats(snapshot, chapterName) {
             latestAttempt: null,
             totalTime: 0
         },
-
         cbt3: {
             attempts: 0,
             bestScore: 0,
@@ -34,7 +29,6 @@ export function calculateCBTStats(snapshot, chapterName) {
             latestAttempt: null,
             totalTime: 0
         },
-
         cbt4: {
             attempts: 0,
             bestScore: 0,
@@ -43,7 +37,6 @@ export function calculateCBTStats(snapshot, chapterName) {
             latestAttempt: null,
             totalTime: 0
         },
-
         cbt5: {
             attempts: 0,
             bestScore: 0,
@@ -52,7 +45,6 @@ export function calculateCBTStats(snapshot, chapterName) {
             latestAttempt: null,
             totalTime: 0
         },
-
         cbt6: {
             attempts: 0,
             bestScore: 0,
@@ -62,7 +54,6 @@ export function calculateCBTStats(snapshot, chapterName) {
             totalTime: 0
         }
     };
-
     snapshot.forEach(doc => {
         const result = doc.data();
         if (chapterName && result.chapter !== chapterName) {
@@ -71,23 +62,17 @@ export function calculateCBTStats(snapshot, chapterName) {
         if (!cbtStats[result.cbt]) {
             return;
         }
-
         const stats = cbtStats[result.cbt];
-
         stats.attempts++;
-
         if (result.score > stats.bestScore) {
             stats.bestScore = result.score;
         }
-
         if (result.percentage > stats.bestPercentage) {
             stats.bestPercentage = result.percentage;
         }
     });
-
     return cbtStats;
 }
-
 export async function getQuizResults(uid) {
     const quizRef = collection(
         db,
@@ -95,12 +80,9 @@ export async function getQuizResults(uid) {
         uid,
         "quizResults"
     );
-
     const snapshot = await getDocs(quizRef);
-
     return snapshot;
 }
-
 export function calculateChapterStats(snapshot, chapterName) {
     const chapterStats = {
         totalTime: 0,
@@ -108,7 +90,6 @@ export function calculateChapterStats(snapshot, chapterName) {
         questionsSolved: 0,
         notesProgress: 0
     };
-
     snapshot.forEach(doc => {
         const result = doc.data();
         if (result.chapter !== chapterName) {
@@ -116,11 +97,9 @@ export function calculateChapterStats(snapshot, chapterName) {
 }
         chapterStats.totalTime += result.timeTaken || 0;
         chapterStats.questionsSolved += result.totalQuestions || 0;
-
         if (result.score > chapterStats.bestScore) {
             chapterStats.bestScore = result.score;
         }
     });
-
     return chapterStats;
 }
