@@ -3,86 +3,85 @@ import {
     collection,
     getDocs
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
 export function calculateCBTStats(snapshot, chapterName) {
-    const cbtStats = {
-        cbt1: {
-            attempts: 0,
-            bestScore: 0,
-            bestPercentage: 0,
-            latestScore: 0,
-            latestAttempt: null,
-            totalTime: 0
-        },
-        cbt2: {
-            attempts: 0,
-            bestScore: 0,
-            bestPercentage: 0,
-            latestScore: 0,
-            latestAttempt: null,
-            totalTime: 0
-        },
-        cbt3: {
-            attempts: 0,
-            bestScore: 0,
-            bestPercentage: 0,
-            latestScore: 0,
-            latestAttempt: null,
-            totalTime: 0
-        },
-        cbt4: {
-            attempts: 0,
-            bestScore: 0,
-            bestPercentage: 0,
-            latestScore: 0,
-            latestAttempt: null,
-            totalTime: 0
-        },
-        cbt5: {
-            attempts: 0,
-            bestScore: 0,
-            bestPercentage: 0,
-            latestScore: 0,
-            latestAttempt: null,
-            totalTime: 0
-        },
-        cbt6: {
-            attempts: 0,
-            bestScore: 0,
-            bestPercentage: 0,
-            latestScore: 0,
-            latestAttempt: null,
-            totalTime: 0
-        }
-    };
+    const cbtStats = {};
+
     snapshot.forEach(doc => {
         const result = doc.data();
+        
+        // Filter by chapter name if provided
         if (chapterName && result.chapter !== chapterName) {
-    return;
-}
-        if (!cbtStats[result.cbt]) {
             return;
         }
-        const stats = cbtStats[result.cbt];
-        stats.attempts++;
-        if (result.score > stats.bestScore) {
-            stats.bestScore = result.score;
+
+        const cbtKey = result.cbt;
+        if (!cbtKey) {
+            return;
         }
-        if (result.percentage > stats.bestPercentage) {
-            stats.bestPercentage = result.percentage;
+
+        // Dynamically initialize CBT stats object if it doesn't exist yet
+        if (!cbtStats[cbtKey]) {
+            cbtStats[cbtKey] = {
+                attempts: 0,
+                bestScore: 0,
+                bestPercentage: 0,
+                latestScore: 0,
+                latestAttempt: null,
+                totalTime: 0
+            };
+        }
+
+        const stats = cbtStats[cbtKey];
+        stats.attempts++;
+
+        const score = result.score || 0;
+        const percentage = result.percentage || 0;
+        const timeTaken = result.timeTaken || 0;
+
+        stats.totalTime += timeTaken;
+
+        if (score > stats.bestScore) {
+            stats.bestScore = score;
+        }
+
+        if (percentage > stats.bestPercentage) {
+            stats.bestPercentage = percentage;
+        }
+
+        // Track latest attempt if completedAt is available
+        const completedAt = result.completedAt;
+        if (completedAt) {
+            const attemptDate = typeof completedAt.toDate === "function" 
+                ? completedAt.toDate() 
+                : new Date(completedAt);
+
+            if (!stats.latestAttempt || attemptDate > stats.latestAttempt) {
+                stats.latestAttempt = attemptDate;
+                stats.latestScore = score;
+            }
         }
     });
+
     return cbtStats;
 }
+
 export async function getQuizResults(uid) {
+    if (!uid) {
+        throw new Error("User UID is required to fetch quiz results.");
+    }
+
     const quizRef = collection(
         db,
         "students",
         uid,
         "quizResults"
     );
+    
     const snapshot = await getDocs(quizRef);
     return snapshot;
 }
+
 export function calculateChapterStats(snapshot, chapterName) {
     const chapterStats = {
         totalTime: 0,
@@ -90,16 +89,24 @@ export function calculateChapterStats(snapshot, chapterName) {
         questionsSolved: 0,
         notesProgress: 0
     };
+
+    if (!snapshot) return chapterStats;
+
     snapshot.forEach(doc => {
         const result = doc.data();
-        if (result.chapter !== chapterName) {
-    return;
-}
+        
+        if (chapterName && result.chapter !== chapterName) {
+            return;
+        }
+
         chapterStats.totalTime += result.timeTaken || 0;
         chapterStats.questionsSolved += result.totalQuestions || 0;
-        if (result.score > chapterStats.bestScore) {
-            chapterStats.bestScore = result.score;
+        
+        const score = result.score || 0;
+        if (score > chapterStats.bestScore) {
+            chapterStats.bestScore = score;
         }
     });
+
     return chapterStats;
 }

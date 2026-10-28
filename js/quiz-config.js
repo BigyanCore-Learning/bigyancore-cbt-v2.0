@@ -1,4 +1,5 @@
 export const quizConfig = {
+    // Atomic Structure (Short keys)
     cbt1: {
         title: "পরমাণুর গঠন (Atomic Structure) - CBT 1",
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
@@ -89,7 +90,9 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।",
             "এই পরীক্ষার ফল শুধুমাত্র এই Quiz-এর পারফরম্যান্সের উপর ভিত্তি করে তৈরি।"
         ]
-        },
+    },
+
+    // Chemical Bonding
     "chemical-bonding-cbt1": {
         title: "Chemical Bonding and Molecular Structure - CBT 1",
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
@@ -151,6 +154,8 @@ export const quizConfig = {
             "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
+
+    // Classification of Elements & Periodicity
     "classification-periodicity-cbt1": {
         title: "Classification of Elements and Periodicity in Properties - CBT 1",
         subtitle: "Class XI Chemistry | WBCHSE + NCERT + JEE/NEET Foundation Test",
@@ -178,7 +183,7 @@ export const quizConfig = {
             "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
             "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
             "কিছু প্রশ্ন Multiple Correct হতে পারে।",
-            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না."
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     },
     "classification-periodicity-cbt3": {
@@ -208,7 +213,26 @@ export const quizConfig = {
             "প্রতিটি প্রশ্নের জন্য নির্দিষ্ট সময় রেকর্ড করা হবে।",
             "প্রয়োজনে Hint Button ব্যবহার করতে পারবেন।",
             "কিছু প্রশ্ন Multiple Correct হতে পারে।",
-            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না."
+            "Submit করার পরে ফলাফল পরিবর্তন করা যাবে না।"
         ]
     }
 };
+
+/**
+ * Helper function to safely retrieve quiz configuration 
+ * regardless of how chapters and CBTs are named or stored in localStorage.
+ */
+export function getQuizConfig(chapterId, cbtId) {
+    // Try composite key first (e.g., "chemical-bonding-cbt1")
+    const compositeKey = `${chapterId}-${cbtId}`;
+    if (quizConfig[compositeKey]) {
+        return quizConfig[compositeKey];
+    }
+
+    // Fall back to direct key (e.g., "cbt1" for atomic-structure)
+    if (quizConfig[cbtId]) {
+        return quizConfig[cbtId];
+    }
+
+    throw new Error(`Quiz configuration not found for chapter: "${chapterId}", CBT: "${cbtId}"`);
+}

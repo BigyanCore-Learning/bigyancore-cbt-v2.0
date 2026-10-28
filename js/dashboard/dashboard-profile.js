@@ -40,8 +40,11 @@ export function loadProfilePhoto(photoURL) {
     // Handle image load failures directly on the DOM element
     img.onerror = () => {
         img.src = defaultPhoto;
+        // Prevent infinite error loops if the default photo also fails
+        img.onerror = null; 
     };
 
-    // Append timestamp cache-buster safely
-    img.src = photoURL + "?v=" + Date.now();
+    // Safely append timestamp cache-buster handling existing query params
+    const separator = photoURL.includes("?") ? "&" : "?";
+    img.src = `${photoURL}${separator}v=${Date.now()}`;
 }

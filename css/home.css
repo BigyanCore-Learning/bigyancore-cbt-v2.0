@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(135deg, #eaf6ff, #ffffff);
@@ -13,6 +14,7 @@ body {
     min-height: 100vh;
     padding: 24px;
 }
+
 .home-container {
     width: 100%;
     max-width: 700px;
@@ -22,25 +24,30 @@ body {
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
+
 .logo {
     width: 140px;
     max-width: 100%;
     margin-bottom: 25px;
 }
+
 h1 {
     color: #0B5ED7;
     font-size: 42px;
     margin-bottom: 15px;
 }
+
 .tagline {
     font-size: 22px;
     color: #333;
     margin-bottom: 15px;
 }
+
 .subtitle {
     color: #666;
     margin-bottom: 28px;
 }
+
 .login-message {
     color: #555;
     font-size: 15px;
@@ -48,6 +55,7 @@ h1 {
     max-width: 480px;
     margin: 0 auto 28px;
 }
+
 /* Shared button styling */
 .start-btn,
 .guest-btn {
@@ -63,27 +71,32 @@ h1 {
     font-weight: bold;
     transition: background 0.25s ease, transform 0.25s ease;
 }
+
 /* Login button */
 .start-btn {
     background: #0B5ED7;
     color: white;
     margin-bottom: 16px;
 }
+
 .start-btn:hover {
     background: #084298;
     transform: translateY(-2px);
 }
+
 /* Continue without login button */
 .guest-btn {
     background: #198754;
     color: white;
     border: 2px solid #198754;
 }
+
 .guest-btn:hover {
     background: #146c43;
     border-color: #146c43;
     transform: translateY(-2px);
 }
+
 /* Mobile layout */
 @media (max-width: 600px) {
     .home-container {

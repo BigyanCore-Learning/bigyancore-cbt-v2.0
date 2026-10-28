@@ -1,4 +1,3 @@
-
 export const chapters = [
 {
     id: "atomic-structure",
@@ -8,7 +7,6 @@ export const chapters = [
     emoji: "⚛",
     description:
         "Master one of the most important chapters of Chemistry.",
-
     page: "chapter.html",
     notes: true,
     practice: true,
@@ -70,12 +68,12 @@ export const chapters = [
     notes: false,
     practice: false,
     pyq: false,
-  cbts: [
-  { id: "cbt1", title: "CBT 1", questions: 25, duration: 35, buttonText: "Start CBT 1" },
-  { id: "cbt2", title: "CBT 2", questions: 25, duration: 35, buttonText: "Start CBT 2" },
-  { id: "cbt3", title: "CBT 3", questions: 25, duration: 35, buttonText: "Start CBT 3" },
-  { id: "cbt4", title: "CBT 4", questions: 25, duration: 35, buttonText: "Start CBT 4" }
-]
+    cbts: [
+        { id: "cbt1", title: "CBT 1", questions: 25, duration: 35, buttonText: "Start CBT 1" },
+        { id: "cbt2", title: "CBT 2", questions: 25, duration: 35, buttonText: "Start CBT 2" },
+        { id: "cbt3", title: "CBT 3", questions: 25, duration: 35, buttonText: "Start CBT 3" },
+        { id: "cbt4", title: "CBT 4", questions: 25, duration: 35, buttonText: "Start CBT 4" }
+    ]
 },
 {
     id: "chemical-bonding",
@@ -89,35 +87,35 @@ export const chapters = [
     notes: false,
     practice: false,
     pyq: false,   
-cbts: [
-    {
-        id: "cbt1",
-        title: "CBT 1",
-        questions: 25,
-        duration: 35,
-        buttonText: "Start CBT 1"
-    },
-    {
-        id: "cbt2",
-        title: "CBT 2",
-        questions: 35,
-        duration: 45,
-        buttonText: "Start CBT 2"
-    },
-    {
-        id: "cbt3",
-        title: "CBT 3",
-        questions: 35,
-        duration: 45,
-        buttonText: "Start CBT 3"
-    },
-    {
-        id: "cbt4",
-        title: "CBT 4",
-        questions: 50,
-        duration: 60,
-        buttonText: "Start CBT 4"
-    }
-]
+    cbts: [
+        {
+            id: "cbt1",
+            title: "CBT 1",
+            questions: 25,
+            duration: 35,
+            buttonText: "Start CBT 1"
+        },
+        {
+            id: "cbt2",
+            title: "CBT 2",
+            questions: 35,
+            duration: 45,
+            buttonText: "Start CBT 2"
+        },
+        {
+            id: "cbt3",
+            title: "CBT 3",
+            questions: 35,
+            duration: 45,
+            buttonText: "Start CBT 3"
+        },
+        {
+            id: "cbt4",
+            title: "CBT 4",
+            questions: 50,
+            duration: 60,
+            buttonText: "Start CBT 4"
+        }
+    ]
 }
 ];
